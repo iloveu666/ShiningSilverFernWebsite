@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shining Silver Fern LTD — Cleaning Solutions in Auckland</title>
+  <meta name="description" content="Shining Silver Fern provides professional Airbnb, office and event cleaning solutions across Auckland. Eco‑friendly, reliable, and inspection‑ready." />
+  <meta name="theme-color" content="#0C3C7E" />
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Shining Silver Fern LTD — Cleaning Solutions" />
+  <meta property="og:description" content="Specialists in Airbnb turnarounds, office cleaning and functions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/logo.png" />
+  <meta property="og:locale" content="en_NZ" />
+
+  <!-- Structured data for Local Business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CleaningService",
+    "name": "Shining Silver Fern LTD",
+    "image": "assets/logo.png",
+    "areaServed": "Auckland",
+    "url": "https://<your-username>.github.io/shining-silver-fern-site/",
+    "telephone": "+64221996468",
+    "email": "shiningsilverfern@gmail.com",
+    "priceRange": "$$",
+    "description": "Specialists in Airbnb changeovers, office cleans, event & function cleaning."
+  }
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#home">
+        <img src="assets/logo.png" alt="Shining Silver Fern logo" />
+        <span class="brand-text">Shining Silver Fern LTD</span>
+      </a>
+      <button class="nav-toggle" aria-controls="menu" aria-expanded="false"><span class="sr-only">Menu</span>☰</button>
+      <ul id="menu" class="menu">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#estimator">Estimator</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a class="btn btn-small" href="#contact">Get a Quote</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero">
+      <div class="hero-inner">
+        <h1>
+          <span class="eyebrow">Cleaning Solutions • Auckland</span>
+          Shining results, every time.
+        </h1>
+        <p class="lead">Specialists in <strong>Airbnb changeovers</strong>, <strong>office cleaning</strong>, and <strong>functions & events</strong> — with inspections, inventory and linen options.</p>
+        <div class="cta-row">
+          <a class="btn" href="#estimator">Instant estimate</a>
+          <a class="btn btn-ghost" href="#services">Explore services</a>
+        </div>
+        <ul class="trust">
+          <li>Eco‑friendly products</li>
+          <li>Checklist & inspection ready</li>
+          <li>Police‑vetted team</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <h2>What we do</h2>
+        <p class="section-intro">Flexible, reliable cleaning tailored to your property and schedule.</p>
+
+        <div class="cards">
+          <article class="card reveal">
+            <h3>Airbnb & Short‑Stay</h3>
+            <p>Fast turnarounds with hotel‑grade presentation. Linen change, restock essentials, property inventory & photo report optional.</p>
+            <ul>
+              <li>Bed making & staging</li>
+              <li>Kitchen & bathroom sanitisation</li>
+              <li>Laundry / linen add‑on</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Offices & Commercial</h3>
+            <p>After‑hours or daytime service to keep workplaces safe and spotless. Consistent, auditable checklists.</p>
+            <ul>
+              <li>Bins, desks, floors & kitchens</li>
+              <li>Toilets, touchpoints, consumables</li>
+              <li>Custom frequency & scope</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Events & Functions</h3>
+            <p>Pre‑event setup and post‑event deep clean. Venues returned to “as‑new” condition on time.</p>
+            <ul>
+              <li>Before / during / after crew</li>
+              <li>Glassware, surfaces, floors</li>
+              <li>Waste sorting & removal</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="estimator" class="section alt">
+      <div class="container">
+        <h2>Instant price estimator</h2>
+        <p class="section-intro">Quick ballpark pricing. Final quotes may vary after a property walkthrough.</p>
+
+        <form id="quoteForm" class="estimator" aria-describedby="estimateNote">
+          <div class="grid">
+            <label>Property type
+              <select name="type" required>
+                <option value="airbnb">Airbnb / Short‑stay</option>
+                <option value="office">Office</option>
+                <option value="event">Event / Function</option>
+              </select>
+            </label>
+
+            <label>Bedrooms
+              <input name="bedrooms" type="number" min="0" max="8" value="2" required />
+            </label>
+
+            <label>Bathrooms
+              <input name="bathrooms" type="number" min="1" max="6" value="1" required />
+            </label>
+
+            <label class="checkbox">
+              <input name="linen" type="checkbox" /> Include linen service
+            </label>
+
+            <fieldset class="addons">
+              <legend>Optional add‑ons</legend>
+              <label class="checkbox"><input type="checkbox" name="addon_oven"> Oven deep clean</label>
+              <label class="checkbox"><input type="checkbox" name="addon_fridge"> Fridge deep clean</label>
+              <label class="checkbox"><input type="checkbox" name="addon_windows"> Interior windows</label>
+              <label class="checkbox"><input type="checkbox" name="addon_carpet"> Carpet spot clean</label>
+              <label class="checkbox"><input type="checkbox" name="addon_lawn"> Lawn mowing (exterior)</label>
+            </fieldset>
+          </div>
+
+          <div class="estimate">
+            <button class="btn" type="submit">Calculate estimate</button>
+            <output id="estimate" aria-live="polite">$—</output>
+            <p id="estimateNote" class="muted">Includes GST. For recurring service, discounts may apply.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="why-us" class="section">
+      <div class="container">
+        <h2>Why choose Shining Silver Fern</h2>
+        <div class="pill-list">
+          <span class="pill">NZ‑owned & operated</span>
+          <span class="pill">Fully insured</span>
+          <span class="pill">Digital checklists</span>
+          <span class="pill">Photo reports</span>
+          <span class="pill">Supplies & vacuum included</span>
+          <span class="pill">Flexible scheduling</span>
+        </div>
+
+        <div class="testimonial reveal" role="region" aria-label="Customer testimonial">
+          <blockquote>
+            “Flawless Airbnb changeovers — our guest ratings jumped immediately. Fast, reliable and professional.”
+          </blockquote>
+          <p class="author">— Property Host, Auckland CBD</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section alt">
+      <div class="container">
+        <h2>FAQ</h2>
+
+        <details class="faq-item">
+          <summary>Do you bring your own supplies and equipment?</summary>
+          <p>Yes — we bring eco‑friendly cleaning agents, cloths and a commercial vacuum. If you prefer specific products, just let us know.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does linen service work?</summary>
+          <p>We can collect, wash, dry and return linen, or use a laundry partner. For Airbnb changeovers we can also provide hotel‑grade linen by request.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Which areas do you cover?</summary>
+          <p>Greater Auckland including CBD, West, North Shore, East and South. For sites outside these areas, contact us for availability.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container">
+        <h2>Ready for a sparkling property?</h2>
+        <p class="section-intro">Call, email or send a quick message — we’ll respond within one business day.</p>
+
+        <div class="contact-grid">
+          <div>
+            <ul class="contact-list">
+              <li><a class="contact-link" href="tel:+64221996468">+64 22 199 6468</a></li>
+              <li><a class="contact-link" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">shiningsilverfern@gmail.com</a></li>
+            </ul>
+            <p class="muted small">Tip: You can also enable the form below to use Formspree — see README.</p>
+          </div>
+
+          <form class="contact-form" action="mailto:shiningsilverfern@gmail.com" method="post" enctype="text/plain">
+            <label>Your name
+              <input name="name" type="text" required />
+            </label>
+            <label>Email
+              <input name="email" type="email" required />
+            </label>
+            <label>Message
+              <textarea name="message" rows="4" required></textarea>
+            </label>
+            <button class="btn" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Shining Silver Fern LTD · Cleaning Solutions · Auckland</p>
+      <nav aria-label="Footer">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
