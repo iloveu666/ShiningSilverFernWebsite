@@ -1,204 +1,124 @@
-// Mobile menu
-const toggle = document.querySelector('.nav-toggle');
-const menu = document.getElementById('menu');
-if (toggle && menu) {
-  toggle.addEventListener('click', () => {
-    const open = menu.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-  });
+/* Brand */
+:root{
+  --brand:#0C3C7E; --brand-2:#183F8F; --text:#0B1220; --muted:#5c6b82;
+  --bg:#ffffff; --alt:#f6f8fb; --card:#ffffff; --accent:#C9D6EA;
+  --radius:16px; --shadow:0 10px 20px rgba(0,0,0,.08);
 }
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+img{max-width:100%;height:auto;vertical-align:middle}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;line-height:1.2;margin:0 0 .5rem}
+h1{font-size:clamp(2rem,3.2vw + 1rem,3.2rem)}
+h2{font-size:clamp(1.6rem,2.2vw + .8rem,2.2rem)}
+h3{font-size:1.25rem}
+p{margin:.5rem 0 1rem}
+.lead{font-size:1.125rem;max-width:70ch;margin-inline:auto}
+.small{font-size:.9rem}.muted{color:var(--muted)}
+.eyebrow{display:block;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;color:#e6edf8}
 
-// Year
-const y = document.getElementById('year');
-if (y) y.textContent = new Date().getFullYear();
+/* Accessibility */
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;padding:.5rem 1rem;background:#fff;color:#000;z-index:1000;border-radius:8px;box-shadow:var(--shadow)}
+.sr-only{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
 
 /* Scroll progress bar */
-const bar = document.getElementById('scrollbar');
-function onScrollBar(){
-  const h = document.documentElement;
-  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
-  bar.style.width = (scrolled * 100) + '%';
-}
-document.addEventListener('scroll', onScrollBar, {passive:true});
-onScrollBar();
+#scrollbar{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,#76a5ff,#bcd3ff);z-index:70}
 
-/* Parallax hero (disabled for reduced motion) */
-const prm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const parallaxImg = document.querySelector('.parallax-img');
-if (parallaxImg && !prm) {
-  const baseY = -4; // %
-  function parallax(){
-    const y = window.scrollY || 0;
-    parallaxImg.style.transform = `translateY(${baseY + y * -0.02}%)`;
-    requestAnimationFrame(parallax);
-  }
-  requestAnimationFrame(parallax);
+/* Header */
+.site-header{position:sticky;top:0;z-index:60;background:linear-gradient(0deg,rgba(12,60,126,.95),rgba(12,60,126,1));color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.6rem 1rem;max-width:1200px;margin:0 auto}
+.brand{display:flex;align-items:center;text-decoration:none;color:#fff;gap:.6rem}
+.brand img{width:40px;height:40px;border-radius:10px;object-fit:contain;background:rgba(255,255,255,.06)}
+.brand-text{font-weight:800;letter-spacing:.2px}
+.menu{display:flex;gap:1rem;align-items:center;list-style:none;margin:0;padding:0}
+.link{color:#fff;text-decoration:none;font-weight:700;opacity:.9}
+.link:hover,.link:focus{opacity:1;text-decoration:underline}
+.nav-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.4);color:#fff;padding:.4rem .6rem;border-radius:10px}
+@media (max-width: 820px){
+  .nav-toggle{display:inline-block}
+  .menu{position:absolute;inset:56px 1rem auto 1rem;background:#0C3C7E;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:.8rem;flex-direction:column;display:none}
+  .menu.open{display:flex}
 }
 
-/* Tilt cards (subtle) */
-document.querySelectorAll('.tilt').forEach(card=>{
-  let rect;
-  card.addEventListener('mousemove', e=>{
-    rect = rect || card.getBoundingClientRect();
-    const rx = (e.clientY - rect.top - rect.height/2)/rect.height;
-    const ry = (e.clientX - rect.left - rect.width/2)/rect.width;
-    card.style.transform = `rotateX(${rx*-3}deg) rotateY(${ry*3}deg) translateY(-3px)`;
-  });
-  card.addEventListener('mouseleave', ()=>{ card.style.transform=''; rect=null; });
-});
+/* Buttons: interactive clearly different */
+.btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:999px;padding:.62rem 1.05rem;transition:transform .12s ease,box-shadow .12s ease;cursor:pointer;user-select:none}
+.btn:focus{outline:3px solid #9cc0ff;outline-offset:2px}
+.btn-primary{background:#fff;color:var(--brand);border:2px solid #fff;box-shadow:0 8px 18px rgba(0,0,0,.08)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 20px rgba(0,0,0,.12)}
+.btn-outline{background:transparent;color:#fff;border:2px solid #cfe0ff}
+.btn-outline:hover{transform:translateY(-1px);background:rgba(255,255,255,.06)}
+.btn-ghost{background:transparent;color:#fff;border:2px dashed rgba(255,255,255,.35)}
+.btn-ghost:hover{transform:translateY(-1px);background:rgba(255,255,255,.04)}
+.btn-small{padding:.45rem .8rem}
 
-/* ===== Pricing (GST inclusive) ===== */
-const PRICING = {
-  airbnb: { oneBedBase: 80, extraBedroom: 25, perBathroom: 15, linen: 30 }, // $80 for 1BR turnover
-  deep: [
-    { maxBR: 2, price: 330 },
-    { maxBR: 3, price: 480 },
-    { maxBR: 4, price: 650 },
-    { maxBR: 99, base: 650, perExtraBR: 120 }
-  ],
-  hourly: { one: 50, two: 70, threePlus: 95 },
-  extras: {
-    carpetPerBedroom: 300,
-    windowRate: 7.5,
-    windowBulkCap: 200,
-    lawnFlat: 50,
-    inspection: 80
-  }
-};
-function formatNZD(n){ return n.toLocaleString('en-NZ',{ style:'currency', currency:'NZD', maximumFractionDigits:0 }); }
+/* Non-interactive tags (not buttons) */
+.tags{display:flex;gap:.8rem;list-style:none;margin:1.2rem 0 0;padding:0;flex-wrap:wrap;justify-content:center}
+.tag{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#e8f0ff;border-radius:999px;padding:.45rem .75rem;cursor:default}
+.pill-list{display:flex;gap:.5rem;flex-wrap:wrap;margin:.5rem 0 1rem;justify-content:center}
+.chip{display:inline-block;background:#eef3ff;border:1px solid #dfe8fb;color:var(--brand);padding:.4rem .7rem;border-radius:999px;text-decoration:none;font-weight:700}
+.chip:hover{background:#e3ebff}
+.tag{background:#ecf2ff;border:1px solid #e1e9ff;color:#233b69}
 
-/* ===== Estimator wiring ===== */
-const form = document.getElementById('quoteForm');
-const serviceSel = document.getElementById('service');
-const bedroomsEl = document.getElementById('bedrooms');
-const bathroomsEl = document.getElementById('bathrooms');
-const linenEl = document.getElementById('linen');
-const hoursEl = document.getElementById('hours');
-const cleanersEl = document.getElementById('cleaners');
+/* Hero + Parallax */
+.hero{position:relative;overflow:hidden;color:#fff;text-align:center}
+.parallax{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.parallax-img{width:110%;height:110%;object-fit:cover;filter:brightness(.65);transform:translateY(-4%);transition:transform .2s linear}
+@media (prefers-reduced-motion: reduce){ .parallax-img{transform:none!important} }
+.hero-inner{max-width:1100px;margin:0 auto;padding:clamp(3rem,7vw,6rem) 1rem}
+.hero-logo{display:block;margin:0 auto 1rem;width:min(220px,40vw);height:auto;filter:drop-shadow(0 8px 20px rgba(0,0,0,.25));border-radius:18px;background:rgba(255,255,255,.05)}
 
-const bedroomsWrap = document.getElementById('bedroomsWrap');
-const bathroomsWrap = document.getElementById('bathroomsWrap');
-const linenWrap = document.getElementById('linenWrap');
-const hoursWrap = document.getElementById('hoursWrap');
-const cleanersWrap = document.getElementById('cleanersWrap');
+/* Sections */
+.section{padding:clamp(2.5rem,6vw,4rem) 1rem}
+.section.alt{background:var(--alt)}
+.container{max-width:1100px;margin:0 auto}
+.section-intro{max-width:70ch;margin-inline:auto;text-align:center}
 
-const out = document.getElementById('estimate');
-const breakdownWrap = document.getElementById('breakdownWrap');
-const breakdownList = document.getElementById('breakdownList');
-const emailLink = document.getElementById('emailLink');
+/* Cards with media + subtle tilt */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.card{background:var(--card);border:1px solid #e6ecf7;border-radius:var(--radius);padding:0 0 1rem;box-shadow:var(--shadow);transition:transform .2s ease, box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 26px rgba(0,0,0,.12)}
+.card-media{height:170px;border-radius:16px 16px 0 0;background-size:cover;background-position:center;background-image:var(--img)}
+@media (max-width: 900px){ .cards{grid-template-columns:1fr} }
 
-function updateFieldVisibility() {
-  const svc = serviceSel.value;
-  const isHourly = svc === 'hourly';
-  const isAirbnb = svc === 'airbnb';
-  bedroomsWrap.classList.toggle('hide', isHourly);
-  bathroomsWrap.classList.toggle('hide', isHourly);
-  linenWrap.classList.toggle('hide', !isAirbnb);
-  hoursWrap.classList.toggle('hide', !isHourly);
-  cleanersWrap.classList.toggle('hide', !isHourly);
-}
+/* Parallax band */
+.band{position:relative}
+.band-img{height:46vh;min-height:260px;background-image:var(--img);background-size:cover;background-position:center;background-attachment:fixed;filter:brightness(.8)}
+@media (max-width: 900px){ .band-img{background-attachment:scroll} }
+.band-caption{position:absolute;left:50%;bottom:10%;transform:translateX(-50%);color:#fff;background:rgba(0,0,0,.35);padding:.5rem .8rem;border-radius:10px}
 
-function deepPrice(bedrooms) {
-  for (const tier of PRICING.deep) {
-    if (bedrooms <= tier.maxBR) {
-      if (tier.price) return tier.price;
-      const extras = Math.max(0, bedrooms - 4) * (tier.perExtraBR || 0);
-      return (tier.base || 0) + extras;
-    }
-  }
-  return 330;
-}
-function windowsPrice(count) {
-  const per = (count || 0) * PRICING.extras.windowRate;
-  const bulk = count >= 25 ? PRICING.extras.windowBulkCap : Infinity;
-  return Math.min(per, bulk);
-}
-function buildEmailBody(lines) {
-  const nl = encodeURIComponent('\n');
-  return lines.map(l => encodeURIComponent(l)).join(nl);
-}
+/* Estimator */
+.estimator{background:#fff;border:1px solid #e6ecf7;border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);margin-top:.5rem}
+.estimator .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+label{display:flex;flex-direction:column;gap:.35rem;font-weight:800}
+label.number{gap:.3rem;font-weight:700}
+input[type="text"],input[type="email"],input[type="number"],select,textarea{border:1px solid #c8d2e5;border-radius:12px;padding:.6rem .7rem;font:inherit;outline-offset:2px}
+.checkbox{flex-direction:row;align-items:center;gap:.5rem;font-weight:700}
+.addons{margin:.6rem 0;border:1px dashed #c8d2e5;border-radius:12px;padding:.6rem}
+.hide{display:none}
+.estimate{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+output#estimate{font-weight:800;font-size:1.4rem;background:#F1F5FF;border:1px solid #dfe8fb;border-radius:999px;padding:.4rem .8rem}
+.breakdown{margin-top:.6rem}.breakdown[open] summary{margin-bottom:.3rem}
+.breakdown ul{margin:.4rem 0;padding-left:1.2rem}
+.disabled{opacity:.6;pointer-events:none}
 
-function calculate(e) {
-  if (e) e.preventDefault();
-  const svc = serviceSel.value;
-  const bedrooms = Number(bedroomsEl.value || 0);
-  const bathrooms = Number(bathroomsEl.value || 0);
-  const hours = Number(hoursEl.value || 0);
-  const cleaners = Number(cleanersEl.value || 1);
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start}
+.contact-form{background:#fff;border:1px solid #e6ecf7;border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
+.contact-list{list-style:none;padding:0;margin:.5rem 0 1rem}
+.contact-list .link{color:var(--brand);text-decoration:none}
+@media (max-width: 880px){ .contact-grid{grid-template-columns:1fr} }
 
-  const fd = new FormData(form);
-  const carpetBR = Number(fd.get('carpet_bedrooms') || 0);
-  const windowCount = Number(fd.get('windows') || 0);
-  const lawn = fd.get('lawn') === 'on';
-  const inspection = fd.get('inspection') === 'on';
-  const linen = linenEl && linenEl.checked;
+/* Footer */
+.footer{background:#041F46;color:#cdd8ee;padding:1rem}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:1100px;margin:0 auto;flex-wrap:wrap}
+.footer .link{color:#cdd8ee;text-decoration:none}
+.footer .link:hover{color:#fff;text-decoration:underline}
 
-  let total = 0;
-  const lines = [];
-
-  if (svc === 'airbnb') {
-    const base = PRICING.airbnb.oneBedBase;
-    const extraBeds = Math.max(0, bedrooms - 1) * PRICING.airbnb.extraBedroom;
-    const bathCost = Math.max(0, bathrooms) * PRICING.airbnb.perBathroom;
-    total += base + extraBeds + bathCost;
-    lines.push(`Airbnb turnover: ${formatNZD(base)} (1 bedroom)`);
-    if (extraBeds) lines.push(`Extra bedrooms: ${formatNZD(extraBeds)}`);
-    if (bathCost) lines.push(`Bathrooms: ${formatNZD(bathCost)}`);
-    if (linen) { total += PRICING.airbnb.linen; lines.push(`Linen service: ${formatNZD(PRICING.airbnb.linen)}`); }
-  } else if (svc === 'deep') {
-    const price = deepPrice(bedrooms || 1);
-    total += price; lines.push(`Deep clean (${bedrooms || 1} BR): ${formatNZD(price)}`);
-  } else {
-    const rate = cleaners >= 3 ? PRICING.hourly.threePlus : (cleaners === 2 ? PRICING.hourly.two : PRICING.hourly.one);
-    const cost = rate * (hours || 1);
-    total += cost; lines.push(`Hourly (${cleaners} cleaner${cleaners>1?'s':''} × ${hours || 1}h @ ${formatNZD(rate)}/h): ${formatNZD(cost)}`);
-  }
-
-  if (carpetBR) { const c = carpetBR * PRICING.extras.carpetPerBedroom; total += c; lines.push(`Carpet deep clean (${carpetBR} BR): ${formatNZD(c)}`); }
-  if (windowCount) { const w = windowsPrice(windowCount); total += w; lines.push(`Window cleaning (${windowCount}): ${formatNZD(w)}`); }
-  if (lawn) { total += PRICING.extras.lawnFlat; lines.push(`Lawn mowing & trimming: ${formatNZD(PRICING.extras.lawnFlat)}`); }
-  if (inspection) { total += PRICING.extras.inspection; lines.push(`Inspection & inventory: ${formatNZD(PRICING.extras.inspection)}`); }
-
-  out.textContent = `${formatNZD(total)} (approx.)`;
-  breakdownList.innerHTML = lines.map(l => `<li>${l}</li>`).join('');
-  breakdownWrap.classList.remove('hide');
-
-  const subject = encodeURIComponent('Website Estimate — Shining Silver Fern');
-  const body = buildEmailBody([`Service: ${svc}`, ...lines, `Total: ${formatNZD(total)}`]);
-  emailLink.href = `mailto:shiningsilverfern@gmail.com?subject=${subject}&body=${body}`;
-  emailLink.classList.remove('disabled');
-  emailLink.setAttribute('aria-disabled','false');
-}
-if (form) {
-  form.addEventListener('submit', calculate);
-  ['change','input'].forEach(evt => form.addEventListener(evt, () => { updateFieldVisibility(); calculate(); }));
-  updateFieldVisibility(); calculate();
-}
-
-/* ===== Sparkle Game (gamification) ===== */
-const gameBtn = document.getElementById('playGameBtn');
-const modal = document.getElementById('gameModal');
-const gameArea = document.getElementById('gameArea');
-const startBtn = document.getElementById('startGame');
-const stopBtn = document.getElementById('stopGame');
-const scoreEl = document.getElementById('score');
-const perk = document.getElementById('perk');
-let timer = null, score = 0;
-
-function spawnDust(){
-  const d = document.createElement('button');
-  d.className = 'dust';
-  d.setAttribute('aria-label','Dust bunny');
-  const x = Math.random() * (gameArea.clientWidth - 40);
-  const y = Math.random() * (gameArea.clientHeight - 40);
-  d.style.left = x + 'px'; d.style.top = y + 'px';
-  d.addEventListener('click', ()=>{ score++; scoreEl.textContent = 'Score: ' + score; d.remove(); if (score >= 15) perk.classList.remove('hide'); });
-  setTimeout(()=> d.remove(), 2000);
-  gameArea.appendChild(d);
-}
-function startGame(){ score = 0; scoreEl.textContent='Score: 0'; perk.classList.add('hide'); if (timer) clearInterval(timer); timer = setInterval(spawnDust, 450); }
-function stopGame(){ if (timer) clearInterval(timer); timer = null; }
-gameBtn?.addEventListener('click', ()=> modal.showModal());
-startBtn?.addEventListener('click', startGame);
-stopBtn?.addEventListener('click', stopGame);
-modal?.addEventListener('close', stopGame);
+/* Game modal */
+.game{border:none;border-radius:18px;padding:0;max-width:720px;width:95vw}
+.game::backdrop{background:rgba(0,0,0,.55)}
+.game-top,.game-bottom{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #e6ecf7}
+.game-bottom{border-top:1px solid #e6ecf7;border-bottom:0}
+.game-area{height:320px;background:linear-gradient(#fefefe,#f6f9ff);position:relative;overflow:hidden}
+.dust{position:absolute;width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #777, #444);box-shadow:0 4px 10px rgba(0,0,0,.25);cursor:pointer}
+.perk{margin:0 16px 16px}
