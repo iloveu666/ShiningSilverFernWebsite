@@ -76,12 +76,36 @@ p{margin:.5rem 0 1rem}
 .container{max-width:1100px;margin:0 auto}
 .section-intro{max-width:70ch;margin-inline:auto;text-align:center}
 
-/* Cards (no photos; brand gradient header) */
+/* Card grid */
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
-.card{background:var(--card);border:1px solid #e6ecf7;border-radius:var(--radius);padding:0 0 1rem;box-shadow:var(--shadow);transition:transform .2s ease, box-shadow .2s ease}
-.card:hover{transform:translateY(-3px);box-shadow:0 16px 26px rgba(0,0,0,.12)}
-.card-media{height:140px;border-radius:16px 16px 0 0;background:linear-gradient(160deg,#eaf1ff,#d7e4ff)}
 @media (max-width: 900px){ .cards{grid-template-columns:1fr} }
+
+/* Card and media */
+.card{
+  background:var(--card);
+  border:1px solid #e6ecf7;
+  border-radius:var(--radius);
+  padding:0;
+  box-shadow:var(--shadow);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 26px rgba(0,0,0,.12)}
+
+/* Image in the top band (uses the --img inline var) */
+.card-media{
+  height:180px;
+  border-radius:16px 16px 0 0;
+  background-image:
+    linear-gradient(to bottom, rgba(7,42,84,0) 55%, rgba(7,42,84,.10) 100%),
+    var(--img);
+  background-size:cover;
+  background-position:center;
+}
+
+/* Centered text in cards */
+.card-body{padding:1rem;text-align:center}
+.card h3{margin:.2rem 0 .4rem;text-align:center}
+.card p{margin:0;text-align:center}
 
 /* Parallax brand band */
 .band{position:relative}
