@@ -5,10 +5,10 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shining Silver Fern LTD — Cleaning Solutions in Auckland</title>
-  <meta name="description" content="Deep cleaning, Airbnb changeovers, carpet & window cleaning, lawn care, inspections and property care across Auckland." />
+  <meta name="description" content="Deep cleaning, Airbnb turnovers, carpet & window cleaning, lawn care, inspections and property care across Auckland." />
   <meta name="theme-color" content="#0C3C7E" />
 
-  <!-- Favicons (paths point to repo root to match your current files) -->
+  <!-- Favicons – paths match repo root -->
   <link rel="icon" href="favicon.png" type="image/png" sizes="256x256">
 
   <!-- Fonts -->
@@ -45,6 +45,9 @@
   </script>
 </head>
 <body>
+  <!-- Scroll progress -->
+  <div id="scrollbar" aria-hidden="true"></div>
+
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" role="banner">
@@ -55,52 +58,96 @@
       </a>
       <button class="nav-toggle" aria-controls="menu" aria-expanded="false"><span class="sr-only">Menu</span>☰</button>
       <ul id="menu" class="menu">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#estimator">Estimator</a></li>
-        <li><a href="#why-us">Why Us</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a class="btn btn-small" href="#contact">Get a Quote</a></li>
+        <li><a class="link" href="#services">Services</a></li>
+        <li><a class="link" href="#estimator">Estimator</a></li>
+        <li><a class="link" href="#why-us">Why Us</a></li>
+        <li><a class="link" href="gallery.html">Gallery</a></li>
+        <li><a class="btn btn-primary btn-small" href="#contact">Get a Quote</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main">
+    <!-- PARALLAX HERO -->
     <section id="home" class="hero">
+      <div class="parallax" aria-hidden="true">
+        <!-- Unsplash Source: random cleaning image; disabled for prefers-reduced-motion via CSS -->
+        <img class="parallax-img" src="https://source.unsplash.com/1600x900/?cleaning,housekeeping" alt="" />
+      </div>
       <div class="hero-inner">
-        <img class="hero-logo" src="logo.png" alt="Shining Silver Fern" width="256" height="256" loading="lazy" decoding="async" />
+        <img class="hero-logo" src="logo.png" alt="Shining Silver Fern" width="220" height="220" loading="lazy" decoding="async" />
         <h1>
           <span class="eyebrow">Cleaning Solutions • Auckland</span>
           Shining results, every time.
         </h1>
         <p class="lead">Exceptional <strong>deep cleaning</strong>, <strong>Airbnb turnovers</strong>, <strong>carpet & window cleaning</strong>, <strong>lawn care</strong> and <strong>inspection & inventory reporting</strong>.</p>
         <div class="cta-row">
-          <a class="btn" href="#estimator">Instant estimate</a>
-          <a class="btn btn-ghost" href="#services">Explore services</a>
+          <a class="btn btn-primary" href="#estimator">Instant estimate</a>
+          <a class="btn btn-outline" href="#services">Explore services</a>
+          <button class="btn btn-ghost" id="playGameBtn" type="button">Play Sparkle Game ✨</button>
         </div>
-        <ul class="trust">
-          <li>Eco-safe products</li>
-          <li>Checklist & inspection ready</li>
-          <li>Insured & vetted team</li>
+        <!-- Non-interactive tags (visually distinct from buttons) -->
+        <ul class="tags" aria-label="Key qualities">
+          <li class="tag">Eco-safe products</li>
+          <li class="tag">Checklist & inspection ready</li>
+          <li class="tag">Insured & vetted team</li>
         </ul>
       </div>
     </section>
 
+    <!-- SERVICES -->
     <section id="services" class="section">
       <div class="container">
         <h2>Our Services</h2>
         <p class="section-intro">Interior deep cleans, Airbnb changeovers, carpet & window cleaning, lawn mowing & hedge trimming, and property inspection with inventory reporting.</p>
 
         <div class="cards">
-          <article class="card reveal"><h3>Interior Deep Clean</h3><p>Top-to-bottom clean of all rooms, kitchens, bathrooms and common areas using eco-safe agents.</p></article>
-          <article class="card reveal"><h3>Airbnb Turnover</h3><p>Hotel-standard resets between guests, restock essentials, linen option available.</p></article>
-          <article class="card reveal"><h3>Carpet Cleaning</h3><p>Spot and deep extraction to remove stains, odours and allergens.</p></article>
-          <article class="card reveal"><h3>Window Cleaning</h3><p>Interior & exterior panes, frames and sills for a pristine finish.</p></article>
-          <article class="card reveal"><h3>Lawn Mowing & Trimming</h3><p>Regular mowing, edging and hedge trims to keep exteriors tidy.</p></article>
-          <article class="card reveal"><h3>Inspection & Inventory</h3><p>Detailed condition assessments and supply audits for proactive care.</p></article>
+          <article class="card tilt">
+            <div class="card-media parallax-band" style="--img:url('https://source.unsplash.com/1200x800/?cleaning,kitchen');"></div>
+            <h3>Interior Deep Clean</h3>
+            <p>Top-to-bottom clean of rooms, kitchens, bathrooms and common areas using eco-safe agents.</p>
+          </article>
+
+          <article class="card tilt">
+            <div class="card-media parallax-band" style="--img:url('https://source.unsplash.com/1200x800/?airbnb,housekeeping');"></div>
+            <h3>Airbnb Turnover</h3>
+            <p>Hotel-standard resets between guests, restock essentials, linen option available.</p>
+          </article>
+
+          <article class="card tilt">
+            <div class="card-media parallax-band" style="--img:url('https://source.unsplash.com/1200x800/?carpet,cleaning');"></div>
+            <h3>Carpet Cleaning</h3>
+            <p>Spot and deep extraction to remove stains, odours and allergens.</p>
+          </article>
+
+          <article class="card tilt">
+            <div class="card-media parallax-band" style="--img:url('https://source.unsplash.com/1200x800/?window,cleaning');"></div>
+            <h3>Window Cleaning</h3>
+            <p>Interior & exterior panes, frames and sills for a pristine finish.</p>
+          </article>
+
+          <article class="card tilt">
+            <div class="card-media parallax-band" style="--img:url('https://source.unsplash.com/1200x800/?lawn,mowing');"></div>
+            <h3>Lawn Mowing & Trimming</h3>
+            <p>Regular mowing, edging and hedge trims to keep exteriors tidy.</p>
+          </article>
+
+          <article class="card tilt">
+            <div class="card-media parallax-band" style="--img:url('https://source.unsplash.com/1200x800/?inspection,clipboard');"></div>
+            <h3>Inspection & Inventory</h3>
+            <p>Detailed condition assessments and supply audits for proactive care.</p>
+          </article>
         </div>
       </div>
     </section>
 
+    <!-- PARALLAX IMAGE BAND -->
+    <section class="band">
+      <div class="band-img" style="--img:url('https://source.unsplash.com/1600x900/?cleaning,bathroom');" role="img" aria-label="Bathroom cleaning"></div>
+      <h3 class="band-caption">Detail-oriented cleaning with eco-safe products</h3>
+    </section>
+
+    <!-- ESTIMATOR -->
     <section id="estimator" class="section alt">
       <div class="container">
         <h2>Instant price estimator</h2>
@@ -160,7 +207,7 @@
           </div>
 
           <div class="estimate">
-            <button class="btn" type="submit">Calculate estimate</button>
+            <button class="btn btn-primary" type="submit">Calculate estimate</button>
             <output id="estimate" aria-live="polite">$—</output>
             <p id="estimateNote" class="muted small">
               Airbnb guide: <strong>$80 for a 1-bedroom turnover</strong> (linen optional).
@@ -169,12 +216,12 @@
             <details id="breakdownWrap" class="breakdown hide">
               <summary>View cost breakdown</summary>
               <ul id="breakdownList"></ul>
-              <a id="emailLink" class="btn btn-small disabled" href="#" aria-disabled="true">Email this estimate</a>
+              <a id="emailLink" class="btn btn-outline btn-small disabled" href="#" aria-disabled="true">Email this estimate</a>
             </details>
           </div>
         </form>
 
-        <div class="bundles reveal">
+        <div class="bundles">
           <h3>Bundled proposals (guide)</h3>
           <ul>
             <li><strong>Option A — Standard Deep Clean Bundle:</strong> Deep clean + carpet + window + garden tidy + inspection · <em>Small (1–2BR):</em> $480–$550 · <em>Medium (3–4BR):</em> $650–$750</li>
@@ -184,19 +231,21 @@
       </div>
     </section>
 
+    <!-- WHY US -->
     <section id="why-us" class="section">
       <div class="container">
         <h2>Why choose Shining Silver Fern</h2>
         <div class="pill-list">
-          <span class="pill">Eco-conscious</span>
-          <span class="pill">Fully insured</span>
-          <span class="pill">Vetted team</span>
-          <span class="pill">Digital checklists</span>
-          <span class="pill">Photo reports</span>
-          <span class="pill">Flexible scheduling</span>
+          <a class="chip" href="#estimator">Transparent pricing</a>
+          <span class="tag">Eco-conscious</span>
+          <span class="tag">Fully insured</span>
+          <span class="tag">Vetted team</span>
+          <span class="tag">Digital checklists</span>
+          <span class="tag">Photo reports</span>
+          <a class="chip" href="#contact">Flexible scheduling</a>
         </div>
 
-        <div class="testimonial reveal" role="region" aria-label="Customer testimonial">
+        <div class="testimonial" role="region" aria-label="Customer testimonial">
           <blockquote>
             “Flawless deep cleans and reliable reporting — our properties look hotel-ready after every visit.”
           </blockquote>
@@ -205,15 +254,7 @@
       </div>
     </section>
 
-    <section id="faq" class="section alt">
-      <div class="container">
-        <h2>FAQ</h2>
-        <details class="faq-item"><summary>Do you bring your own supplies and equipment?</summary><p>Yes — we bring eco-safe agents, cloths and a commercial vacuum. If you prefer specific products, tell us during booking.</p></details>
-        <details class="faq-item"><summary>How are carpet and window prices calculated?</summary><p>Carpet is per bedroom; windows are per window with a bulk cap — the estimator shows both and picks the better value automatically.</p></details>
-        <details class="faq-item"><summary>Do you service my area?</summary><p>Greater Auckland (CBD, West, North Shore, East and South). For sites outside these areas, contact us for availability.</p></details>
-      </div>
-    </section>
-
+    <!-- CONTACT -->
     <section id="contact" class="section contact">
       <div class="container">
         <h2>Ready for a sparkling property?</h2>
@@ -222,17 +263,17 @@
         <div class="contact-grid">
           <div>
             <ul class="contact-list">
-              <li><a class="contact-link" href="tel:+64221996468">+64 22 199 6468</a></li>
-              <li><a class="contact-link" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">shiningsilverfern@gmail.com</a></li>
+              <li><a class="link" href="tel:+64221996468">+64 22 199 6468</a></li>
+              <li><a class="link" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">shiningsilverfern@gmail.com</a></li>
             </ul>
-            <p class="muted small">Prefer in-browser submissions? I can switch this form to Formspree.</p>
+            <p class="muted small">Prefer in-browser submissions? Ask me to switch the form to Formspree.</p>
           </div>
 
           <form class="contact-form" action="mailto:shiningsilverfern@gmail.com" method="post" enctype="text/plain">
             <label>Your name<input name="name" type="text" required /></label>
             <label>Email<input name="email" type="email" required /></label>
             <label>Message<textarea name="message" rows="4" required></textarea></label>
-            <button class="btn" type="submit">Send</button>
+            <button class="btn btn-primary" type="submit">Send</button>
           </form>
         </div>
       </div>
@@ -243,11 +284,28 @@
     <div class="container footer-inner">
       <p>© <span id="year"></span> Shining Silver Fern LTD · Cleaning Solutions · Auckland</p>
       <nav aria-label="Footer">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
+        <a class="link" href="#home">Home</a>
+        <a class="link" href="#services">Services</a>
+        <a class="link" href="#contact">Contact</a>
+        <a class="link" href="gallery.html">Gallery</a>
       </nav>
     </div>
   </footer>
+
+  <!-- Sparkle Game modal -->
+  <dialog id="gameModal" class="game">
+    <form method="dialog" class="game-top">
+      <h3>Sparkle Game</h3>
+      <button class="btn btn-outline btn-small" value="close">Close</button>
+    </form>
+    <p class="muted small">Pop the dust-bunnies! Hit 15 to reveal a perk.</p>
+    <div id="gameArea" class="game-area" aria-live="polite" aria-label="Game area"></div>
+    <div class="game-bottom">
+      <span id="score">Score: 0</span>
+      <button id="startGame" class="btn btn-primary btn-small" type="button">Start</button>
+      <button id="stopGame" class="btn btn-outline btn-small" type="button">Stop</button>
+    </div>
+    <p id="perk" class="perk hide">Nice! Mention <strong>SPARKLE10</strong> for a special treat in your quote.</p>
+  </dialog>
 </body>
 </html>
