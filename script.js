@@ -12,30 +12,22 @@ if (toggle && menu) {
 const y = document.getElementById('year');
 if (y) y.textContent = new Date().getFullYear();
 
-/* Scroll progress bar */
-const bar = document.getElementById('scrollbar');
-function onScrollBar(){
-  const h = document.documentElement;
-  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
-  bar.style.width = (scrolled * 100) + '%';
-}
-document.addEventListener('scroll', onScrollBar, {passive:true});
-onScrollBar();
+/* ===== Brand parallax (no images), respects reduced motion ===== */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const layers = document.querySelectorAll('.layer');
+const bandLayers = document.querySelectorAll('.band-layer');
 
-/* Parallax hero (disabled for reduced motion) */
-const prm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const parallaxImg = document.querySelector('.parallax-img');
-if (parallaxImg && !prm) {
-  const baseY = -4; // %
-  function parallax(){
-    const y = window.scrollY || 0;
-    parallaxImg.style.transform = `translateY(${baseY + y * -0.02}%)`;
-    requestAnimationFrame(parallax);
+if (!reduceMotion) {
+  function animate() {
+    const s = window.scrollY || 0;
+    layers.forEach((el, i) => el.style.transform = `translateY(${(-4 - i*2) + s*-0.02*(i+1)}%)`);
+    bandLayers.forEach((el, i) => el.style.transform = `translateY(${(-6 - i*3) + s*-0.015*(i+1)}%)`);
+    requestAnimationFrame(animate);
   }
-  requestAnimationFrame(parallax);
+  requestAnimationFrame(animate);
 }
 
-/* Tilt cards (subtle) */
+/* Tilt cards */
 document.querySelectorAll('.tilt').forEach(card=>{
   let rect;
   card.addEventListener('mousemove', e=>{
@@ -120,6 +112,7 @@ function buildEmailBody(lines) {
 
 function calculate(e) {
   if (e) e.preventDefault();
+
   const svc = serviceSel.value;
   const bedrooms = Number(bedroomsEl.value || 0);
   const bathrooms = Number(bathroomsEl.value || 0);
@@ -169,36 +162,9 @@ function calculate(e) {
   emailLink.classList.remove('disabled');
   emailLink.setAttribute('aria-disabled','false');
 }
+
 if (form) {
   form.addEventListener('submit', calculate);
   ['change','input'].forEach(evt => form.addEventListener(evt, () => { updateFieldVisibility(); calculate(); }));
-  updateFieldVisibility(); calculate();
+  updateFieldVisibility(); calculate(); // initial
 }
-
-/* ===== Sparkle Game (gamification) ===== */
-const gameBtn = document.getElementById('playGameBtn');
-const modal = document.getElementById('gameModal');
-const gameArea = document.getElementById('gameArea');
-const startBtn = document.getElementById('startGame');
-const stopBtn = document.getElementById('stopGame');
-const scoreEl = document.getElementById('score');
-const perk = document.getElementById('perk');
-let timer = null, score = 0;
-
-function spawnDust(){
-  const d = document.createElement('button');
-  d.className = 'dust';
-  d.setAttribute('aria-label','Dust bunny');
-  const x = Math.random() * (gameArea.clientWidth - 40);
-  const y = Math.random() * (gameArea.clientHeight - 40);
-  d.style.left = x + 'px'; d.style.top = y + 'px';
-  d.addEventListener('click', ()=>{ score++; scoreEl.textContent = 'Score: ' + score; d.remove(); if (score >= 15) perk.classList.remove('hide'); });
-  setTimeout(()=> d.remove(), 2000);
-  gameArea.appendChild(d);
-}
-function startGame(){ score = 0; scoreEl.textContent='Score: 0'; perk.classList.add('hide'); if (timer) clearInterval(timer); timer = setInterval(spawnDust, 450); }
-function stopGame(){ if (timer) clearInterval(timer); timer = null; }
-gameBtn?.addEventListener('click', ()=> modal.showModal());
-startBtn?.addEventListener('click', startGame);
-stopBtn?.addEventListener('click', stopGame);
-modal?.addEventListener('close', stopGame);
