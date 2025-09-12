@@ -8,7 +8,7 @@
   <meta name="description" content="Deep cleaning, Airbnb turnovers, carpet & window cleaning, lawn care, inspections and property care across Auckland." />
   <meta name="theme-color" content="#0C3C7E" />
 
-  <!-- Favicons – paths match repo root -->
+  <!-- Favicons (your files at repo root) -->
   <link rel="icon" href="favicon.png" type="image/png" sizes="256x256">
 
   <!-- Fonts -->
@@ -45,9 +45,6 @@
   </script>
 </head>
 <body>
-  <!-- Scroll progress -->
-  <div id="scrollbar" aria-hidden="true"></div>
-
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" role="banner">
@@ -61,18 +58,18 @@
         <li><a class="link" href="#services">Services</a></li>
         <li><a class="link" href="#estimator">Estimator</a></li>
         <li><a class="link" href="#why-us">Why Us</a></li>
-        <li><a class="link" href="gallery.html">Gallery</a></li>
         <li><a class="btn btn-primary btn-small" href="#contact">Get a Quote</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main">
-    <!-- PARALLAX HERO -->
+    <!-- HERO (brand-only parallax, no stock images) -->
     <section id="home" class="hero">
       <div class="parallax" aria-hidden="true">
-        <!-- Unsplash Source: random cleaning image; disabled for prefers-reduced-motion via CSS -->
-        <img class="parallax-img" src="https://source.unsplash.com/1600x900/?cleaning,housekeeping" alt="" />
+        <div class="layer layer-grad"></div>
+        <div class="layer layer-shine"></div>
+        <div class="layer layer-shapes"></div>
       </div>
       <div class="hero-inner">
         <img class="hero-logo" src="logo.png" alt="Shining Silver Fern" width="220" height="220" loading="lazy" decoding="async" />
@@ -84,9 +81,8 @@
         <div class="cta-row">
           <a class="btn btn-primary" href="#estimator">Instant estimate</a>
           <a class="btn btn-outline" href="#services">Explore services</a>
-          <button class="btn btn-ghost" id="playGameBtn" type="button">Play Sparkle Game ✨</button>
         </div>
-        <!-- Non-interactive tags (visually distinct from buttons) -->
+        <!-- Non-interactive info tags (clearly not buttons) -->
         <ul class="tags" aria-label="Key qualities">
           <li class="tag">Eco-safe products</li>
           <li class="tag">Checklist & inspection ready</li>
@@ -103,37 +99,37 @@
 
         <div class="cards">
           <article class="card tilt">
-            <div class="card-media parallax-band" style="--img:url('https://source.unsplash.com/1200x800/?cleaning,kitchen');"></div>
+            <div class="card-media"></div>
             <h3>Interior Deep Clean</h3>
             <p>Top-to-bottom clean of rooms, kitchens, bathrooms and common areas using eco-safe agents.</p>
           </article>
 
           <article class="card tilt">
-            <div class="card-media parallax-band" style="--img:url('https://source.unsplash.com/1200x800/?airbnb,housekeeping');"></div>
+            <div class="card-media"></div>
             <h3>Airbnb Turnover</h3>
             <p>Hotel-standard resets between guests, restock essentials, linen option available.</p>
           </article>
 
           <article class="card tilt">
-            <div class="card-media parallax-band" style="--img:url('https://source.unsplash.com/1200x800/?carpet,cleaning');"></div>
+            <div class="card-media"></div>
             <h3>Carpet Cleaning</h3>
             <p>Spot and deep extraction to remove stains, odours and allergens.</p>
           </article>
 
           <article class="card tilt">
-            <div class="card-media parallax-band" style="--img:url('https://source.unsplash.com/1200x800/?window,cleaning');"></div>
+            <div class="card-media"></div>
             <h3>Window Cleaning</h3>
             <p>Interior & exterior panes, frames and sills for a pristine finish.</p>
           </article>
 
           <article class="card tilt">
-            <div class="card-media parallax-band" style="--img:url('https://source.unsplash.com/1200x800/?lawn,mowing');"></div>
+            <div class="card-media"></div>
             <h3>Lawn Mowing & Trimming</h3>
             <p>Regular mowing, edging and hedge trims to keep exteriors tidy.</p>
           </article>
 
           <article class="card tilt">
-            <div class="card-media parallax-band" style="--img:url('https://source.unsplash.com/1200x800/?inspection,clipboard');"></div>
+            <div class="card-media"></div>
             <h3>Inspection & Inventory</h3>
             <p>Detailed condition assessments and supply audits for proactive care.</p>
           </article>
@@ -141,9 +137,12 @@
       </div>
     </section>
 
-    <!-- PARALLAX IMAGE BAND -->
-    <section class="band">
-      <div class="band-img" style="--img:url('https://source.unsplash.com/1600x900/?cleaning,bathroom');" role="img" aria-label="Bathroom cleaning"></div>
+    <!-- BRAND PARALLAX BAND (no photos) -->
+    <section class="band" aria-label="Brand band">
+      <div class="band-bg" aria-hidden="true">
+        <div class="band-layer band-grad"></div>
+        <div class="band-layer band-grid"></div>
+      </div>
       <h3 class="band-caption">Detail-oriented cleaning with eco-safe products</h3>
     </section>
 
@@ -213,15 +212,18 @@
               Airbnb guide: <strong>$80 for a 1-bedroom turnover</strong> (linen optional).
               Deep clean: 1–2BR from $330. Hourly: 1 cleaner $50/hr, 2 cleaners $70/hr, 3+ from $95/hr.
             </p>
+
             <details id="breakdownWrap" class="breakdown hide">
               <summary>View cost breakdown</summary>
-              <ul id="breakdownList"></ul>
+              <div class="info-box">
+                <ul id="breakdownList"></ul>
+              </div>
               <a id="emailLink" class="btn btn-outline btn-small disabled" href="#" aria-disabled="true">Email this estimate</a>
             </details>
           </div>
         </form>
 
-        <div class="bundles">
+        <div class="info-box">
           <h3>Bundled proposals (guide)</h3>
           <ul>
             <li><strong>Option A — Standard Deep Clean Bundle:</strong> Deep clean + carpet + window + garden tidy + inspection · <em>Small (1–2BR):</em> $480–$550 · <em>Medium (3–4BR):</em> $650–$750</li>
@@ -235,6 +237,7 @@
     <section id="why-us" class="section">
       <div class="container">
         <h2>Why choose Shining Silver Fern</h2>
+
         <div class="pill-list">
           <a class="chip" href="#estimator">Transparent pricing</a>
           <span class="tag">Eco-conscious</span>
@@ -266,7 +269,7 @@
               <li><a class="link" href="tel:+64221996468">+64 22 199 6468</a></li>
               <li><a class="link" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">shiningsilverfern@gmail.com</a></li>
             </ul>
-            <p class="muted small">Prefer in-browser submissions? Ask me to switch the form to Formspree.</p>
+            <p class="muted small">Prefer in-browser submissions? I can switch this form to Formspree.</p>
           </div>
 
           <form class="contact-form" action="mailto:shiningsilverfern@gmail.com" method="post" enctype="text/plain">
@@ -287,25 +290,8 @@
         <a class="link" href="#home">Home</a>
         <a class="link" href="#services">Services</a>
         <a class="link" href="#contact">Contact</a>
-        <a class="link" href="gallery.html">Gallery</a>
       </nav>
     </div>
   </footer>
-
-  <!-- Sparkle Game modal -->
-  <dialog id="gameModal" class="game">
-    <form method="dialog" class="game-top">
-      <h3>Sparkle Game</h3>
-      <button class="btn btn-outline btn-small" value="close">Close</button>
-    </form>
-    <p class="muted small">Pop the dust-bunnies! Hit 15 to reveal a perk.</p>
-    <div id="gameArea" class="game-area" aria-live="polite" aria-label="Game area"></div>
-    <div class="game-bottom">
-      <span id="score">Score: 0</span>
-      <button id="startGame" class="btn btn-primary btn-small" type="button">Start</button>
-      <button id="stopGame" class="btn btn-outline btn-small" type="button">Stop</button>
-    </div>
-    <p id="perk" class="perk hide">Nice! Mention <strong>SPARKLE10</strong> for a special treat in your quote.</p>
-  </dialog>
 </body>
 </html>
