@@ -4,23 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shining Silver Fern LTD — Cleaning Solutions in Auckland</title>
-  <meta name="description" content="Shining Silver Fern provides professional Airbnb, office and event cleaning solutions across Auckland. Eco‑friendly, reliable, and inspection‑ready." />
+  <meta name="description" content="Professional Airbnb, office and event/function cleaning across Auckland. Eco-friendly, reliable, inspection-ready." />
   <meta name="theme-color" content="#0C3C7E" />
-  <link rel="icon" href="assets/favicon.png" type="image/png" />
+
+  <!-- Favicons (PNG works reliably on GitHub Pages) -->
+  <link rel="icon" href="assets/favicon.png" type="image/png" sizes="256x256">
+
+  <!-- Web fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Styles & scripts -->
   <link rel="stylesheet" href="styles.css" />
   <script defer src="script.js"></script>
 
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Shining Silver Fern LTD — Cleaning Solutions" />
-  <meta property="og:description" content="Specialists in Airbnb turnarounds, office cleaning and functions." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/logo.png" />
-  <meta property="og:locale" content="en_NZ" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Shining Silver Fern LTD — Cleaning Solutions">
+  <meta property="og:description" content="Specialists in Airbnb changeovers, office cleaning, and events.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/logo.png">
+  <meta property="og:locale" content="en_NZ">
 
-  <!-- Structured data for Local Business -->
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -28,21 +34,27 @@
     "name": "Shining Silver Fern LTD",
     "image": "assets/logo.png",
     "areaServed": "Auckland",
-    "url": "https://<your-username>.github.io/shining-silver-fern-site/",
+    "url": "https://www.shiningsilverfern.co.nz/",
     "telephone": "+64221996468",
     "email": "shiningsilverfern@gmail.com",
     "priceRange": "$$",
-    "description": "Specialists in Airbnb changeovers, office cleans, event & function cleaning."
+    "description": "Specialists in Airbnb changeovers, office cleans, and functions."
   }
   </script>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" role="banner">
     <nav class="nav" aria-label="Primary">
       <a class="brand" href="#home">
-        <img src="assets/logo.png" alt="Shining Silver Fern logo" />
+        <!-- Brand mark: keep width/height to avoid layout shift -->
+        <img
+          src="assets/logo.png"
+          alt="Shining Silver Fern logo"
+          width="64" height="64"
+          loading="eager" decoding="async"
+        />
         <span class="brand-text">Shining Silver Fern LTD</span>
       </a>
       <button class="nav-toggle" aria-controls="menu" aria-expanded="false"><span class="sr-only">Menu</span>☰</button>
@@ -59,6 +71,14 @@
   <main id="main">
     <section id="home" class="hero">
       <div class="hero-inner">
+        <!-- Large lockup for hero (re-uses same logo asset; CSS controls size) -->
+        <img
+          class="hero-logo"
+          src="assets/logo.png"
+          alt="Shining Silver Fern"
+          width="256" height="256"
+          loading="lazy" decoding="async"
+        />
         <h1>
           <span class="eyebrow">Cleaning Solutions • Auckland</span>
           Shining results, every time.
@@ -69,9 +89,9 @@
           <a class="btn btn-ghost" href="#services">Explore services</a>
         </div>
         <ul class="trust">
-          <li>Eco‑friendly products</li>
+          <li>Eco-friendly products</li>
           <li>Checklist & inspection ready</li>
-          <li>Police‑vetted team</li>
+          <li>Police-vetted team</li>
         </ul>
       </div>
     </section>
@@ -83,18 +103,18 @@
 
         <div class="cards">
           <article class="card reveal">
-            <h3>Airbnb & Short‑Stay</h3>
-            <p>Fast turnarounds with hotel‑grade presentation. Linen change, restock essentials, property inventory & photo report optional.</p>
+            <h3>Airbnb & Short-Stay</h3>
+            <p>Fast turnarounds with hotel-grade presentation. Linen change, restock essentials, property inventory & photo report optional.</p>
             <ul>
               <li>Bed making & staging</li>
               <li>Kitchen & bathroom sanitisation</li>
-              <li>Laundry / linen add‑on</li>
+              <li>Laundry / linen add-on</li>
             </ul>
           </article>
 
           <article class="card reveal">
             <h3>Offices & Commercial</h3>
-            <p>After‑hours or daytime service to keep workplaces safe and spotless. Consistent, auditable checklists.</p>
+            <p>After-hours or daytime service to keep workplaces safe and spotless. Consistent, auditable checklists.</p>
             <ul>
               <li>Bins, desks, floors & kitchens</li>
               <li>Toilets, touchpoints, consumables</li>
@@ -104,7 +124,7 @@
 
           <article class="card reveal">
             <h3>Events & Functions</h3>
-            <p>Pre‑event setup and post‑event deep clean. Venues returned to “as‑new” condition on time.</p>
+            <p>Pre-event setup and post-event deep clean. Venues returned to “as-new” condition on time.</p>
             <ul>
               <li>Before / during / after crew</li>
               <li>Glassware, surfaces, floors</li>
@@ -124,7 +144,7 @@
           <div class="grid">
             <label>Property type
               <select name="type" required>
-                <option value="airbnb">Airbnb / Short‑stay</option>
+                <option value="airbnb">Airbnb / Short-stay</option>
                 <option value="office">Office</option>
                 <option value="event">Event / Function</option>
               </select>
@@ -143,7 +163,7 @@
             </label>
 
             <fieldset class="addons">
-              <legend>Optional add‑ons</legend>
+              <legend>Optional add-ons</legend>
               <label class="checkbox"><input type="checkbox" name="addon_oven"> Oven deep clean</label>
               <label class="checkbox"><input type="checkbox" name="addon_fridge"> Fridge deep clean</label>
               <label class="checkbox"><input type="checkbox" name="addon_windows"> Interior windows</label>
@@ -165,7 +185,7 @@
       <div class="container">
         <h2>Why choose Shining Silver Fern</h2>
         <div class="pill-list">
-          <span class="pill">NZ‑owned & operated</span>
+          <span class="pill">NZ-owned & operated</span>
           <span class="pill">Fully insured</span>
           <span class="pill">Digital checklists</span>
           <span class="pill">Photo reports</span>
@@ -188,12 +208,12 @@
 
         <details class="faq-item">
           <summary>Do you bring your own supplies and equipment?</summary>
-          <p>Yes — we bring eco‑friendly cleaning agents, cloths and a commercial vacuum. If you prefer specific products, just let us know.</p>
+          <p>Yes — we bring eco-friendly cleaning agents, cloths and a commercial vacuum. If you prefer specific products, just let us know.</p>
         </details>
 
         <details class="faq-item">
           <summary>How does linen service work?</summary>
-          <p>We can collect, wash, dry and return linen, or use a laundry partner. For Airbnb changeovers we can also provide hotel‑grade linen by request.</p>
+          <p>We can collect, wash, dry and return linen, or use a laundry partner. For Airbnb changeovers we can also provide hotel-grade linen by request.</p>
         </details>
 
         <details class="faq-item">
@@ -214,9 +234,10 @@
               <li><a class="contact-link" href="tel:+64221996468">+64 22 199 6468</a></li>
               <li><a class="contact-link" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">shiningsilverfern@gmail.com</a></li>
             </ul>
-            <p class="muted small">Tip: You can also enable the form below to use Formspree — see README.</p>
+            <p class="muted small">Tip: You can switch the form to Formspree later for direct submissions.</p>
           </div>
 
+          <!-- Mailto for now; change 'action' to Formspree endpoint to collect without email client -->
           <form class="contact-form" action="mailto:shiningsilverfern@gmail.com" method="post" enctype="text/plain">
             <label>Your name
               <input name="name" type="text" required />
