@@ -1,6 +1,6 @@
 /* Shining Silver Fern — Brand styles */
 :root{
-  --brand:#0C3C7E;         /* deep royal blue */
+  --brand:#0C3C7E;
   --brand-2:#183F8F;
   --text:#0B1220;
   --muted:#5c6b82;
@@ -20,7 +20,7 @@ body{
   background:var(--bg);
   line-height:1.6;
 }
-img{max-width:100%;height:auto;vertical-align:middle;image-rendering:auto}
+img{max-width:100%;height:auto;vertical-align:middle}
 h1,h2,h3{
   font-family:"Playfair Display", Georgia, "Times New Roman", serif;
   line-height:1.2;
@@ -49,9 +49,9 @@ p{margin:.5rem 0 1rem}
 .nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.6rem 1rem; max-width:1200px; margin:0 auto}
 .brand{display:flex; align-items:center; text-decoration:none; color:#fff; gap:.6rem}
 .brand img{width:40px; height:40px; border-radius:10px; object-fit:contain; background:rgba(255,255,255,.06)}
-.brand-text{font-weight:700; letter-spacing:.2px}
+.brand-text{font-weight:800; letter-spacing:.2px}
 .menu{display:flex; gap:1rem; align-items:center; list-style:none; margin:0; padding:0}
-.menu a{color:#fff; text-decoration:none; font-weight:600}
+.menu a{color:#fff; text-decoration:none; font-weight:700}
 .menu a:hover,.menu a:focus{opacity:.9; text-decoration:underline}
 .nav-toggle{display:none; background:none; border:1px solid rgba(255,255,255,.4); color:#fff; padding:.4rem .6rem; border-radius:10px}
 
@@ -74,7 +74,7 @@ p{margin:.5rem 0 1rem}
   width:min(220px, 40vw);
   height:auto;
   filter:drop-shadow(0 8px 20px rgba(0,0,0,.25));
-  border-radius:20px; /* soft corners if logo file is square */
+  border-radius:20px;
   background:rgba(255,255,255,.05);
 }
 .cta-row{display:flex; gap:.8rem; margin:1rem 0 1.2rem; flex-wrap:wrap; justify-content:center}
@@ -96,16 +96,20 @@ p{margin:.5rem 0 1rem}
 /* Estimator */
 .estimator{background:#fff; border:1px solid #e6ecf7; border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow); margin-top:.5rem}
 .estimator .grid{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1rem}
-label{display:flex; flex-direction:column; gap:.35rem; font-weight:700}
-label.number{gap:.3rem}
+label{display:flex; flex-direction:column; gap:.35rem; font-weight:800}
+label.number{gap:.3rem; font-weight:700}
 input[type="text"],input[type="email"],input[type="number"],select,textarea{
   border:1px solid #c8d2e5; border-radius:12px; padding:.6rem .7rem; font:inherit; outline-offset:2px
 }
-.checkbox{flex-direction:row; align-items:center; gap:.5rem; font-weight:600}
+.checkbox{flex-direction:row; align-items:center; gap:.5rem; font-weight:700}
 .addons{margin:.6rem 0; border:1px dashed #c8d2e5; border-radius:12px; padding:.6rem}
 .hide{display:none}
 .estimate{display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-top:.5rem}
 output#estimate{font-weight:800; font-size:1.4rem; background:#F1F5FF; border:1px solid #dfe8fb; border-radius:999px; padding:.4rem .8rem}
+.breakdown{margin-top:.6rem}
+.breakdown[open] summary{margin-bottom:.3rem}
+.breakdown ul{margin:.4rem 0; padding-left:1.2rem}
+.disabled{opacity:.6; pointer-events:none}
 
 /* Why us */
 .pill-list{display:flex; gap:.5rem; flex-wrap:wrap; margin:.5rem 0 1rem; justify-content:center}
@@ -114,28 +118,10 @@ output#estimate{font-weight:800; font-size:1.4rem; background:#F1F5FF; border:1p
 
 /* FAQ */
 .faq-item{border:1px solid #e6ecf7; background:#fff; border-radius:12px; padding:.6rem .8rem; margin:.5rem 0}
-.faq-item summary{cursor:pointer; font-weight:700}
+.faq-item summary{cursor:pointer; font-weight:800}
 
 /* Contact */
 .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:1rem; align-items:start}
 .contact-form{background:#fff; border:1px solid #e6ecf7; border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow)}
 .contact-list{list-style:none; padding:0; margin:.5rem 0 1rem}
-.contact-list a{display:inline-block; padding:.3rem .6rem; border:1px solid #dfe8fb; border-radius:999px; text-decoration:none; color:var(--brand); background:#eef3ff}
-.contact-link:focus{outline:3px solid #99b8ff}
-@media (max-width: 880px){ .contact-grid{grid-template-columns:1fr} }
-
-/* Footer */
-.footer{background:#041F46; color:#cdd8ee; padding:1rem}
-.footer-inner{display:flex; align-items:center; justify-content:space-between; gap:1rem; max-width:1100px; margin:0 auto; flex-wrap:wrap}
-.footer a{color:#cdd8ee; text-decoration:none}
-.footer a:hover{color:#fff; text-decoration:underline}
-
-/* Buttons */
-.btn{background:#ffffff; color:var(--brand); border-radius:999px; padding:.6rem 1rem; border:2px solid #fff; font-weight:800; text-decoration:none; display:inline-block}
-.btn:hover,.btn:focus{filter:brightness(0.98); box-shadow:0 0 0 4px rgba(255,255,255,.2)}
-.btn-ghost{background:transparent; color:#fff; border-color:#dbe6ff}
-.btn-small{padding:.45rem .8rem}
-
-/* Reveal on scroll */
-.reveal{opacity:0; transform:translateY(8px); transition: all .6s ease}
-.reveal.visible{opacity:1; transform:none}
+.contact-list a{display:inline-block; padding:.3rem
