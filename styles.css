@@ -202,3 +202,27 @@ output#estimate {
   min-width: 180px;
   text-align: center;
 }
+
+/* Fix: outline buttons should be readable on light backgrounds */
+.btn-outline{
+  color: var(--brand);               /* visible on white cards */
+  border: 2px solid #c8d2e5;
+  background: #fff;
+}
+.btn-outline:hover{
+  background: #f4f7ff;
+}
+
+/* Keep outline buttons white ONLY on the dark hero */
+.hero .btn-outline{
+  color: #fff;
+  border-color: #cfe0ff;
+  background: transparent;
+}
+.hero .btn-outline:hover{
+  background: rgba(255,255,255,.06);
+}
+
+/* Optional: make "disabled" state still readable */
+.disabled{ opacity: .65; }
+
