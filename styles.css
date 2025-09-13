@@ -244,3 +244,67 @@ output#estimate {
   width: max-content;                 /* shrink to its content */
   margin: .75rem auto 0;              /* <-- centers the button */
 }
+
+/* CONTACT — interactive action cards */
+.contact-actions{
+  display:grid;
+  gap:12px;
+  align-content:start;
+}
+.action-card{
+  --r:18px;
+  position:relative;
+  border-radius:var(--r);
+  padding:1px; /* gradient border thickness */
+  background:
+    conic-gradient(from 180deg at 50% 50%, #cddcff, #9db7ff, #cddcff);
+  box-shadow:0 12px 26px rgba(12,60,126,.08);
+  opacity:0; transform:translateY(8px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+.action-card.in{ opacity:1; transform:none; }
+.action-card-inner{
+  border-radius:calc(var(--r) - 1px);
+  background:#fff;
+  padding:14px;
+}
+.action-head{
+  display:flex; align-items:center; gap:.5rem;
+  font-weight:800; color:var(--brand);
+}
+.big-link{
+  display:block;
+  font-weight:800;
+  font-size:clamp(1rem, 1vw + .9rem, 1.25rem);
+  color:#0b1a36; text-decoration:none;
+  margin:.2rem 0 .6rem;
+  word-break:break-word;
+}
+.big-link:hover{ text-decoration:underline; }
+.action-buttons{ display:flex; gap:.5rem; align-items:center; flex-wrap:wrap }
+
+.action-utility{
+  display:flex; gap:.6rem; align-items:center; margin-top:.4rem;
+}
+.btn-ghost{
+  background:transparent; color:var(--brand);
+  border:2px dashed #b9c9f0;
+}
+.btn-ghost:hover{ background:#f4f7ff }
+
+/* Subtle reveal preference */
+@media (prefers-reduced-motion: reduce){
+  .action-card{ opacity:1; transform:none; }
+}
+
+/* Optional toast for copy feedback */
+.toast{
+  position:fixed; left:50%; bottom:22px; transform:translateX(-50%);
+  background:#072a54; color:#fff;
+  padding:.45rem .8rem; border-radius:999px;
+  box-shadow:0 10px 22px rgba(0,0,0,.2);
+  z-index:1200; font-weight:800; font-size:.95rem;
+  opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;
+}
+.toast.show{ opacity:1; transform:translate(-50%,-2px); }
+
