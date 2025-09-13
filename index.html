@@ -261,40 +261,57 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section contact">
-      <div class="container">
-        <h2>Ready for a sparkling property?</h2>
-        <p class="section-intro">Call, email or send a quick message — we’ll respond within one business day.</p>
+   <section id="contact" class="section contact">
+  <div class="container">
+    <h2>Ready for a sparkling property?</h2>
+    <p class="section-intro">Call, email or send a quick message — we’ll respond within one business day.</p>
 
-        <div class="contact-grid">
-          <div>
-            <ul class="contact-list">
-              <li><a class="link" href="tel:+64221996468">+64 22 199 6468</a></li>
-              <li><a class="link" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">shiningsilverfern@gmail.com</a></li>
-            </ul>
-            <p class="muted small"></p>
+    <div class="contact-grid">
+      <!-- LEFT: Interactive contact actions -->
+      <div class="contact-actions" id="contactActions">
+        <div class="action-card">
+          <div class="action-card-inner">
+            <div class="action-head">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h2.95A2 2 0 0 1 9 3.72l.57 2.53a2 2 0 0 1-.45 1.86l-1.2 1.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 1.86-.45l2.53.57A2 2 0 0 1 21 15.94l1 1z" fill="currentColor"/></svg>
+              <span>Call us</span>
+            </div>
+            <a class="big-link" href="tel:+64221996468">+64 22 199 6468</a>
+            <div class="action-buttons">
+              <a class="btn btn-primary btn-small" href="tel:+64221996468">Call now</a>
+              <button class="btn btn-outline btn-small" type="button" data-copy="+64221996468">Copy</button>
+            </div>
+            <p class="muted small">Fastest response 8:00–18:00 NZT</p>
           </div>
+        </div>
 
-          <form class="contact-form" action="mailto:shiningsilverfern@gmail.com" method="post" enctype="text/plain">
-            <label>Your name<input name="name" type="text" required /></label>
-            <label>Email<input name="email" type="email" required /></label>
-            <label>Message<textarea name="message" rows="4" required></textarea></label>
-            <button class="btn btn-primary" type="submit">Send</button>
-          </form>
+        <div class="action-card">
+          <div class="action-card-inner">
+            <div class="action-head">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 0l8 7 8-7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+              <span>Email us</span>
+            </div>
+            <a class="big-link" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">shiningsilverfern@gmail.com</a>
+            <div class="action-buttons">
+              <a class="btn btn-primary btn-small" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">Email</a>
+              <button class="btn btn-outline btn-small" type="button" data-copy="shiningsilverfern@gmail.com">Copy</button>
+            </div>
+            <p class="muted small">We aim to reply within 1 business day</p>
+          </div>
+        </div>
+
+        <div class="action-utility">
+          <button id="saveVcard" class="btn btn-ghost btn-small" type="button">Save contact (.vcf)</button>
         </div>
       </div>
-    </section>
-  </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Shining Silver Fern LTD · Cleaning Solutions · Auckland</p>
-      <nav aria-label="Footer">
-        <a class="link" href="#home">Home</a>
-        <a class="link" href="#services">Services</a>
-        <a class="link" href="#contact">Contact</a>
-      </nav>
+      <!-- RIGHT: Message form (unchanged) -->
+      <form class="contact-form" action="mailto:shiningsilverfern@gmail.com" method="post" enctype="text/plain">
+        <label>Your name<input name="name" type="text" required /></label>
+        <label>Email<input name="email" type="email" required /></label>
+        <label>Message<textarea name="message" rows="4" required></textarea></label>
+        <button class="btn btn-primary" type="submit">Send</button>
+      </form>
     </div>
-  </footer>
-</body>
-</html>
+  </div>
+</section>
+
