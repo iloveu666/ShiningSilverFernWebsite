@@ -226,3 +226,21 @@ output#estimate {
 /* Optional: make "disabled" state still readable */
 .disabled{ opacity: .65; }
 
+/* Center the cost breakdown + the "Email this estimate" button */
+#breakdownWrap { 
+  text-align: center;                 /* centers inline elements inside details */
+}
+
+#breakdownWrap .info-box {
+  display: inline-block;              /* keep the box snug and centered */
+  text-align: left;                   /* list remains left-aligned inside the box */
+  margin: .4rem auto .6rem;           
+  max-width: 720px;
+}
+
+/* Make the email button center itself */
+#emailLink {
+  display: block;                     /* block allows auto margins to center */
+  width: max-content;                 /* shrink to its content */
+  margin: .75rem auto 0;              /* <-- centers the button */
+}
