@@ -168,3 +168,66 @@ if (form) {
   ['change','input'].forEach(evt => form.addEventListener(evt, () => { updateFieldVisibility(); calculate(); }));
   updateFieldVisibility(); calculate(); // initial
 }
+
+/* ==== Contact interactions: copy, toast, vCard, reveal ==== */
+
+// Copy-to-clipboard with toast
+function showToast(msg){
+  let t = document.getElementById('toast');
+  if(!t){
+    t = document.createElement('div');
+    t.id = 'toast'; t.className = 'toast';
+    t.setAttribute('role','status'); t.setAttribute('aria-live','polite');
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=> t.classList.remove('show'), 1500);
+}
+
+document.querySelectorAll('[data-copy]').forEach(btn=>{
+  btn.addEventListener('click', async () => {
+    const text = btn.getAttribute('data-copy') || '';
+    try{
+      await navigator.clipboard.writeText(text);
+      showToast('Copied to clipboard');
+    }catch{
+      // Fallback
+      const ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); showToast('Copied to clipboard'); }
+      finally{ ta.remove(); }
+    }
+  });
+});
+
+// vCard generator
+document.getElementById('saveVcard')?.addEventListener('click', () => {
+  const vcf =
+`BEGIN:VCARD
+VERSION:3.0
+N:Shining Silver Fern LTD;;;;
+FN:Shining Silver Fern LTD
+ORG:Shining Silver Fern LTD
+TEL;TYPE=CELL:+64221996468
+EMAIL:shiningsilverfern@gmail.com
+URL:https://www.shiningsilverfern.co.nz/
+END:VCARD`;
+  const blob = new Blob([vcf], {type:'text/vcard'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'ShiningSilverFern.vcf';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=> URL.revokeObjectURL(url), 5000);
+});
+
+// Reveal action cards on scroll (once)
+const cards = document.querySelectorAll('.action-card');
+if ('IntersectionObserver' in window && cards.length){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold: .2});
+  cards.forEach(c=> io.observe(c));
+} else {
+  cards.forEach(c=> c.classList.add('in'));
+}
