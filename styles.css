@@ -307,3 +307,24 @@ output#estimate {
   opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;
 }
 .toast.show{ opacity:1; transform:translate(-50%,-2px); }
+
+/* Floating quick-contact reveal on scroll (optional) */
+(function(){
+  const bar = document.getElementById('quickContact');
+  if(!bar) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reveal = () => {
+    const y = window.scrollY || 0;
+    // show after user has engaged with page (e.g., >600px scroll)
+    bar.hidden = y < 600;
+    if(!reduce && !bar.hidden){
+      bar.style.opacity = '1';
+      bar.style.transform = 'translateY(0)';
+    }
+  };
+  // initial state
+  bar.style.opacity = '0'; bar.style.transform = 'translateY(8px)';
+  reveal();
+  window.addEventListener('scroll', reveal, { passive:true });
+})();
+
