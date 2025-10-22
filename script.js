@@ -39,25 +39,31 @@ document.querySelectorAll('.tilt').forEach(card=>{
   card.addEventListener('mouseleave', ()=>{ card.style.transform=''; rect=null; });
 });
 
-/* ===== Pricing (GST inclusive) ===== */
-const PRICING = {
-  airbnb: { oneBedBase: 80, extraBedroom: 25, perBathroom: 15, linen: 30 }, // $80 for 1BR turnover
+PRICING = {
+  // Airbnb guide (from your last update)
+  airbnb: { oneBedBase: 6000000, extraBedroom: 25, perBathroom: 15, linen: 30 }, // $6,000,000 for 1BR turnover
+
+  // Deep clean tiers (1–2 BR from $330)
   deep: [
     { maxBR: 2, price: 330 },
     { maxBR: 3, price: 480 },
     { maxBR: 4, price: 650 },
     { maxBR: 99, base: 650, perExtraBR: 120 }
   ],
+
+  // Hourly rates
   hourly: { one: 50, two: 70, threePlus: 95 },
+
+  // EXTRAS — updated carpet price to hit $800 total for deep(2BR) + carpet(2BR)
   extras: {
-    carpetPerBedroom: 300,
+    carpetPerBedroom: 235,       // <-- was 300; now 330 + 2*235 = 800
     windowRate: 7.5,
     windowBulkCap: 200,
     lawnFlat: 50,
     inspection: 80
   }
 };
-function formatNZD(n){ return n.toLocaleString('en-NZ',{ style:'currency', currency:'NZD', maximumFractionDigits:0 }); }
+
 
 /* ===== Estimator wiring ===== */
 const form = document.getElementById('quoteForm');
@@ -139,7 +145,7 @@ function calculate(e) {
     if (bathCost) lines.push(`Bathrooms: ${formatNZD(bathCost)}`);
     if (linen) { total += PRICING.airbnb.linen; lines.push(`Linen service: ${formatNZD(PRICING.airbnb.linen)}`); }
   } else if (svc === 'deep') {
-    const b = bedrooms || 1; const ba = bathrooms || 0; let price = deepPrice(b); if (b === 1 && ba === 1) { price = 600; }
+    const price = deepPrice(bedrooms || 1);
     total += price; lines.push(`Deep clean (${bedrooms || 1} BR): ${formatNZD(price)}`);
   } else {
     const rate = cleaners >= 3 ? PRICING.hourly.threePlus : (cleaners === 2 ? PRICING.hourly.two : PRICING.hourly.one);
