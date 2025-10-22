@@ -139,7 +139,7 @@ function calculate(e) {
     if (bathCost) lines.push(`Bathrooms: ${formatNZD(bathCost)}`);
     if (linen) { total += PRICING.airbnb.linen; lines.push(`Linen service: ${formatNZD(PRICING.airbnb.linen)}`); }
   } else if (svc === 'deep') {
-    const price = deepPrice(bedrooms || 1);
+    const b = bedrooms || 1; const ba = bathrooms || 0; let price = deepPrice(b); if (b === 1 && ba === 1) { price = 600; }
     total += price; lines.push(`Deep clean (${bedrooms || 1} BR): ${formatNZD(price)}`);
   } else {
     const rate = cleaners >= 3 ? PRICING.hourly.threePlus : (cleaners === 2 ? PRICING.hourly.two : PRICING.hourly.one);
