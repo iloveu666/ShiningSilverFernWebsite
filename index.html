@@ -93,144 +93,153 @@
 
     <!-- SERVICES -->
     <section id="services" class="section">
-  <div class="container">
-    <h2>Our Services</h2>
-    <p class="section-intro">Interior deep cleans, Airbnb changeovers, carpet & window cleaning, lawn mowing & hedge trimming, and property inspection with inventory reporting.</p>
+      <div class="container">
+        <h2>Our Services</h2>
+        <p class="section-intro">Interior deep cleans, Airbnb changeovers, carpet & window cleaning, lawn mowing & hedge trimming, and property inspection with inventory reporting.</p>
 
-    <div class="cards">
-      <article class="card tilt">
-        <div class="card-media" style="--img:url('assets/interior-deep-clean.jpg');"></div>
-        <div class="card-body">
-          <h3>Interior Deep Clean</h3>
-          <p>Top-to-bottom clean of rooms, kitchens, bathrooms and common areas using eco-safe agents.</p>
+        <div class="cards">
+          <article class="card tilt">
+            <div class="card-media" style="--img:url('assets/interior-deep-clean.jpg');"></div>
+            <div class="card-body">
+              <h3>Interior Deep Clean</h3>
+              <p>Top-to-bottom clean of rooms, kitchens, bathrooms and common areas using eco-safe agents.</p>
+            </div>
+          </article>
+
+          <article class="card tilt">
+            <div class="card-media" style="--img:url('assets/airbnb.jpg');"></div>
+            <div class="card-body">
+              <h3>Airbnb Turnover</h3>
+              <p>Hotel-standard resets between guests and restocking of essentials as agreed.</p>
+            </div>
+          </article>
+
+          <article class="card tilt">
+            <div class="card-media" style="--img:url('assets/carpet-cleaning.jpg');"></div>
+            <div class="card-body">
+              <h3>Carpet Cleaning</h3>
+              <p>Spot and deep extraction to remove stains, odours and allergens.</p>
+            </div>
+          </article>
+
+          <article class="card tilt">
+            <div class="card-media" style="--img:url('assets/window-cleaning.jpg');"></div>
+            <div class="card-body">
+              <h3>Window Cleaning</h3>
+              <p>Interior & exterior panes, frames and sills for a pristine finish.</p>
+            </div>
+          </article>
+
+          <article class="card tilt">
+            <div class="card-media" style="--img:url('assets/lawn-mowing.png');"></div>
+            <div class="card-body">
+              <h3>Lawn Mowing & Trimming</h3>
+              <p>Regular mowing, edging and hedge trims to keep exteriors tidy.</p>
+            </div>
+          </article>
+
+          <article class="card tilt">
+            <div class="card-media" style="--img:url('assets/inspection-inventory.jpeg');"></div>
+            <div class="card-body">
+              <h3>Inspection & Inventory</h3>
+              <p>Detailed condition assessments and supply audits for proactive care.</p>
+            </div>
+          </article>
         </div>
-      </article>
+      </div>
+    </section>
 
-      <article class="card tilt">
-        <div class="card-media" style="--img:url('assets/airbnb.jpg');"></div>
-        <div class="card-body">
-          <h3>Airbnb Turnover</h3>
-          <p>Hotel-standard resets between guests, restock essentials, linen option available.</p>
-        </div>
-      </article>
-
-      <article class="card tilt">
-        <div class="card-media" style="--img:url('assets/carpet-cleaning.jpg');"></div>
-        <div class="card-body">
-          <h3>Carpet Cleaning</h3>
-          <p>Spot and deep extraction to remove stains, odours and allergens.</p>
-        </div>
-      </article>
-
-      <article class="card tilt">
-        <div class="card-media" style="--img:url('assets/window-cleaning.jpg');"></div>
-        <div class="card-body">
-          <h3>Window Cleaning</h3>
-          <p>Interior & exterior panes, frames and sills for a pristine finish.</p>
-        </div>
-      </article>
-
-      <article class="card tilt">
-        <div class="card-media" style="--img:url('assets/lawn-mowing.png');"></div>
-        <div class="card-body">
-          <h3>Lawn Mowing & Trimming</h3>
-          <p>Regular mowing, edging and hedge trims to keep exteriors tidy.</p>
-        </div>
-      </article>
-
-      <article class="card tilt">
-        <div class="card-media" style="--img:url('assets/inspection-inventory.jpeg');"></div>
-        <div class="card-body">
-          <h3>Inspection & Inventory</h3>
-          <p>Detailed condition assessments and supply audits for proactive care.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-    <!-- ESTIMATOR -->
+    <!-- ESTIMATOR (UPDATED PRICES) -->
     <section id="estimator" class="section alt">
       <div class="container">
         <h2>Instant price estimator</h2>
-        <p class="section-intro">Indicative pricing (GST inclusive). Final quotes follow a property walk-through.</p>
+        <p class="section-intro">
+          Indicative pricing (GST inclusive). Final quotes follow a property walk-through.
+        </p>
 
         <form id="quoteForm" class="estimator" aria-describedby="estimateNote">
           <div class="grid">
-
             <label>Service
               <select name="service" id="service" required>
-                <option value="airbnb">Airbnb Turnover</option>
-                <option value="deep">One-off Deep Clean</option>
-                <option value="hourly">Hourly Cleaning</option>
+                <option value="airbnb">Airbnb Cleaning</option>
+                <option value="deep">Deep Cleaning (per hour)</option>
+                <option value="carpet">Carpet Cleaning (per hour)</option>
               </select>
             </label>
 
             <label id="bedroomsWrap">Bedrooms
-              <input name="bedrooms" id="bedrooms" type="number" min="0" max="8" value="1" required />
+              <input name="bedrooms" id="bedrooms" type="number" min="1" max="8" value="1" required />
             </label>
 
-            <label id="bathroomsWrap">Bathrooms
-              <input name="bathrooms" id="bathrooms" type="number" min="1" max="6" value="1" required />
-            </label>
-
-            <label id="linenWrap" class="checkbox">
-              <input name="linen" id="linen" type="checkbox" /> Include linen service
+            <label id="bathroomsWrap">Toilets / bathrooms
+              <input name="bathrooms" id="bathrooms" type="number" min="1" max="5" step="0.5" value="1" required />
             </label>
 
             <label id="hoursWrap" class="hide">Hours
               <input name="hours" id="hours" type="number" min="1" max="16" value="3" />
             </label>
 
-            <label id="cleanersWrap" class="hide">Cleaners
-              <select name="cleaners" id="cleaners">
-                <option value="1">1 cleaner</option>
-                <option value="2">2 cleaners</option>
-                <option value="3">3+ cleaners</option>
-              </select>
-            </label>
-
             <fieldset class="addons">
               <legend>Optional add-ons</legend>
 
-              <label class="number">
-                Carpet deep clean (per bedroom)
-                <input type="number" min="0" max="8" value="0" name="carpet_bedrooms" />
+              <label class="checkbox">
+                <input type="checkbox" name="window_addon" id="window_addon" />
+                Window cleaning add-on (+$75)
               </label>
 
-              <label class="number">
-                Window count (interior/exterior)
-                <input type="number" min="0" max="200" value="0" name="windows" />
+              <label class="checkbox">
+                <input type="checkbox" name="carpet_addon" id="carpet_addon" />
+                Carpet cleaning add-on with package (+$200)
               </label>
 
-              <label class="checkbox"><input type="checkbox" name="lawn"> Lawn mowing & trimming</label>
-              <label class="checkbox"><input type="checkbox" name="inspection"> Inspection & inventory report</label>
+              <label class="checkbox">
+                <input type="checkbox" name="lawn" />
+                Lawn mowing & trimming
+              </label>
+
+              <label class="checkbox">
+                <input type="checkbox" name="inspection" />
+                Inspection & inventory report
+              </label>
             </fieldset>
           </div>
 
           <div class="estimate">
             <button class="btn btn-primary" type="submit">Calculate estimate</button>
             <output id="estimate" aria-live="polite">$—</output>
-            <p id="estimateNote" class="muted small">
-              Airbnb guide: <strong>$6000000 for a 1-bedroom turnover</strong> (linen optional).
-              Deep clean: 1–2BR from $330. Hourly: 1 cleaner $50/hr, 2 cleaners $70/hr, 3+ from $95/hr.
-            </p>
-
-            <details id="breakdownWrap" class="breakdown hide">
-              <summary>View cost breakdown</summary>
-              <div class="info-box">
-                <ul id="breakdownList"></ul>
-              </div>
-              <a id="emailLink" class="btn btn-outline btn-small disabled" href="#" aria-disabled="true">Email this estimate</a>
-            </details>
           </div>
+
+          <p id="estimateNote" class="muted small">
+            Airbnb guide: 1BR/1 toilet $125 · 2BR/2 toilets $175 · 3BR/2.5 toilets $225 ·
+            4BR/3.5 toilets $350. Deep cleaning $75/hour · Carpet cleaning $90/hour.
+            Window add-on $75 · Carpet add-on with package $200.
+          </p>
+
+          <details id="breakdownWrap" class="breakdown hide">
+            <summary>View cost breakdown</summary>
+            <div class="info-box">
+              <ul id="breakdownList"></ul>
+            </div>
+            <a id="emailLink" class="btn btn-outline btn-small disabled" href="#" aria-disabled="true">
+              Email this estimate
+            </a>
+          </details>
         </form>
 
         <div class="info-box">
           <h3>Bundled proposals (guide)</h3>
           <ul>
-            <li><strong>Option A — Standard Deep Clean Bundle:</strong> Deep clean + carpet + window + garden tidy + inspection · <em>Small (1–2BR):</em> $800–$550 · <em>Medium (3–4BR):</em> $650–$750</li>
-            <li><strong>Option B — Premium Ongoing Maintenance:</strong> Monthly maintenance (medium property) ~$400/month · Quarterly deep service + lawn ~$400/visit</li>
+            <li>
+              <strong>Option A — Standard Deep Clean Bundle:</strong>
+              Deep clean + carpet + window + garden tidy + inspection ·
+              <em>Small (1–2BR):</em> $480–$550 ·
+              <em>Medium (3–4BR):</em> $650–$750
+            </li>
+            <li>
+              <strong>Option B — Premium Ongoing Maintenance:</strong>
+              Monthly maintenance (medium property) ~$400/month ·
+              Quarterly deep service + lawn ~$400/visit
+            </li>
           </ul>
         </div>
       </div>
@@ -261,57 +270,65 @@
     </section>
 
     <!-- CONTACT -->
-   <section id="contact" class="section contact">
-  <div class="container">
-    <h2>Ready for a sparkling property?</h2>
-    <p class="section-intro">Call, email or send a quick message — we’ll respond within one business day.</p>
+    <section id="contact" class="section contact">
+      <div class="container">
+        <h2>Ready for a sparkling property?</h2>
+        <p class="section-intro">Call, email or send a quick message — we’ll respond within one business day.</p>
 
-    <div class="contact-grid">
-      <!-- LEFT: Interactive contact actions -->
-      <div class="contact-actions" id="contactActions">
-        <div class="action-card">
-          <div class="action-card-inner">
-            <div class="action-head">
-              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h2.95A2 2 0 0 1 9 3.72l.57 2.53a2 2 0 0 1-.45 1.86l-1.2 1.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 1.86-.45l2.53.57A2 2 0 0 1 21 15.94l1 1z" fill="currentColor"/></svg>
-              <span>Call us</span>
+        <div class="contact-grid">
+          <!-- LEFT: Interactive contact actions -->
+          <div class="contact-actions" id="contactActions">
+            <div class="action-card">
+              <div class="action-card-inner">
+                <div class="action-head">
+                  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h2.95A2 2 0 0 1 9 3.72l.57 2.53a2 2 0 0 1-.45 1.86l-1.2 1.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 1.86-.45l2.53.57A2 2 0 0 1 21 15.94l1 1z" fill="currentColor"/></svg>
+                  <span>Call us</span>
+                </div>
+                <a class="big-link" href="tel:+64221996468">+64 22 199 6468</a>
+                <div class="action-buttons">
+                  <a class="btn btn-primary btn-small" href="tel:+64221996468">Call now</a>
+                  <button class="btn btn-outline btn-small" type="button" data-copy="+64221996468">Copy</button>
+                </div>
+                <p class="muted small">Fastest response 8:00–18:00 NZT</p>
+              </div>
             </div>
-            <a class="big-link" href="tel:+64221996468">+64 22 199 6468</a>
-            <div class="action-buttons">
-              <a class="btn btn-primary btn-small" href="tel:+64221996468">Call now</a>
-              <button class="btn btn-outline btn-small" type="button" data-copy="+64221996468">Copy</button>
+
+            <div class="action-card">
+              <div class="action-card-inner">
+                <div class="action-head">
+                  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 0l8 7 8-7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                  <span>Email us</span>
+                </div>
+                <a class="big-link" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">shiningsilverfern@gmail.com</a>
+                <div class="action-buttons">
+                  <a class="btn btn-primary btn-small" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">Email</a>
+                  <button class="btn btn-outline btn-small" type="button" data-copy="shiningsilverfern@gmail.com">Copy</button>
+                </div>
+                <p class="muted small">We aim to reply within 1 business day</p>
+              </div>
             </div>
-            <p class="muted small">Fastest response 8:00–18:00 NZT</p>
+
+            <div class="action-utility">
+              <button id="saveVcard" class="btn btn-ghost btn-small" type="button">Save contact (.vcf)</button>
+            </div>
           </div>
-        </div>
 
-        <div class="action-card">
-          <div class="action-card-inner">
-            <div class="action-head">
-              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 0l8 7 8-7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-              <span>Email us</span>
-            </div>
-            <a class="big-link" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">shiningsilverfern@gmail.com</a>
-            <div class="action-buttons">
-              <a class="btn btn-primary btn-small" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">Email</a>
-              <button class="btn btn-outline btn-small" type="button" data-copy="shiningsilverfern@gmail.com">Copy</button>
-            </div>
-            <p class="muted small">We aim to reply within 1 business day</p>
-          </div>
-        </div>
-
-        <div class="action-utility">
-          <button id="saveVcard" class="btn btn-ghost btn-small" type="button">Save contact (.vcf)</button>
+          <!-- RIGHT: Message form -->
+          <form class="contact-form" action="mailto:shiningsilverfern@gmail.com" method="post" enctype="text/plain">
+            <label>Your name<input name="name" type="text" required /></label>
+            <label>Email<input name="email" type="email" required /></label>
+            <label>Message<textarea name="message" rows="4" required></textarea></label>
+            <button class="btn btn-primary" type="submit">Send</button>
+          </form>
         </div>
       </div>
+    </section>
+  </main>
 
-      <!-- RIGHT: Message form (unchanged) -->
-      <form class="contact-form" action="mailto:shiningsilverfern@gmail.com" method="post" enctype="text/plain">
-        <label>Your name<input name="name" type="text" required /></label>
-        <label>Email<input name="email" type="email" required /></label>
-        <label>Message<textarea name="message" rows="4" required></textarea></label>
-        <button class="btn btn-primary" type="submit">Send</button>
-      </form>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Shining Silver Fern LTD. All rights reserved.</p>
     </div>
-  </div>
-</section>
-
+  </footer>
+</body>
+</html>
