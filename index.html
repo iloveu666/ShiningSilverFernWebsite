@@ -77,7 +77,11 @@
           <span class="eyebrow">Cleaning Solutions • Auckland</span>
           Shining results, every time.
         </h1>
-        <p class="lead">Exceptional <strong>deep cleaning</strong>, <strong>Airbnb turnovers</strong>, <strong>carpet & window cleaning</strong>, <strong>lawn care</strong> and <strong>inspection & inventory reporting</strong>.</p>
+        <p class="lead">
+          Exceptional <strong>deep cleaning</strong>, <strong>Airbnb turnovers</strong>,
+          <strong>carpet & window cleaning</strong>, <strong>lawn care</strong> and
+          <strong>inspection & inventory reporting</strong>.
+        </p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#estimator">Instant estimate</a>
           <a class="btn btn-outline" href="#services">Explore services</a>
@@ -95,7 +99,10 @@
     <section id="services" class="section">
       <div class="container">
         <h2>Our Services</h2>
-        <p class="section-intro">Interior deep cleans, Airbnb changeovers, carpet & window cleaning, lawn mowing & hedge trimming, and property inspection with inventory reporting.</p>
+        <p class="section-intro">
+          Interior deep cleans, Airbnb changeovers, carpet & window cleaning, lawn mowing & hedge trimming,
+          and property inspection with inventory reporting.
+        </p>
 
         <div class="cards">
           <article class="card tilt">
@@ -149,36 +156,41 @@
       </div>
     </section>
 
-    <!-- ESTIMATOR (UPDATED PRICES) -->
+    <!-- ESTIMATOR – SIMPLE, CLEAN -->
     <section id="estimator" class="section alt">
       <div class="container">
         <h2>Instant price estimator</h2>
         <p class="section-intro">
-          Indicative pricing (GST inclusive). Final quotes follow a property walk-through.
+          Quick, no-obligation estimate (GST inclusive). Final quotes follow a property walk-through.
         </p>
 
         <form id="quoteForm" class="estimator" aria-describedby="estimateNote">
           <div class="grid">
+            <!-- Service selection -->
             <label>Service
               <select name="service" id="service" required>
-                <option value="airbnb">Airbnb Cleaning</option>
-                <option value="deep">Deep Cleaning (per hour)</option>
-                <option value="carpet">Carpet Cleaning (per hour)</option>
+                <option value="airbnb">Airbnb cleaning (fixed price)</option>
+                <option value="deep">Deep cleaning (per hour)</option>
+                <option value="carpet">Carpet cleaning (per hour)</option>
               </select>
             </label>
 
-            <label id="bedroomsWrap">Bedrooms
-              <input name="bedrooms" id="bedrooms" type="number" min="1" max="8" value="1" required />
+            <!-- Simple Airbnb size selector -->
+            <label id="airbnbSizeWrap">Airbnb property size
+              <select name="airbnbSize" id="airbnbSize">
+                <option value="1-1">1 bedroom / 1 toilet – $125</option>
+                <option value="2-2">2 bedrooms / 2 toilets – $175</option>
+                <option value="3-2.5">3 bedrooms / 2.5 toilets – $225</option>
+                <option value="4-3.5">4 bedrooms / 3.5 toilets – $350</option>
+              </select>
             </label>
 
-            <label id="bathroomsWrap">Toilets / bathrooms
-              <input name="bathrooms" id="bathrooms" type="number" min="1" max="5" step="0.5" value="1" required />
-            </label>
-
+            <!-- Simple hours input for hourly services -->
             <label id="hoursWrap" class="hide">Hours
               <input name="hours" id="hours" type="number" min="1" max="16" value="3" />
             </label>
 
+            <!-- Very simple add-ons -->
             <fieldset class="addons">
               <legend>Optional add-ons</legend>
 
@@ -191,16 +203,6 @@
                 <input type="checkbox" name="carpet_addon" id="carpet_addon" />
                 Carpet cleaning add-on with package (+$200)
               </label>
-
-              <label class="checkbox">
-                <input type="checkbox" name="lawn" />
-                Lawn mowing & trimming
-              </label>
-
-              <label class="checkbox">
-                <input type="checkbox" name="inspection" />
-                Inspection & inventory report
-              </label>
             </fieldset>
           </div>
 
@@ -211,7 +213,7 @@
 
           <p id="estimateNote" class="muted small">
             Airbnb guide: 1BR/1 toilet $125 · 2BR/2 toilets $175 · 3BR/2.5 toilets $225 ·
-            4BR/3.5 toilets $350. Deep cleaning $75/hour · Carpet cleaning $90/hour.
+            4BR/3.5 toilets $350. Deep cleaning $75/hour · Carpet cleaning $95/hour.
             Window add-on $75 · Carpet add-on with package $200.
           </p>
 
@@ -237,8 +239,8 @@
             </li>
             <li>
               <strong>Option B — Premium Ongoing Maintenance:</strong>
-              Monthly maintenance (medium property) ~$400/month ·
-              Quarterly deep service + lawn ~$400/visit
+              Monthly maintenance (medium property) ~ $400/month ·
+              Quarterly deep service + lawn ~ $400/visit
             </li>
           </ul>
         </div>
@@ -281,7 +283,9 @@
             <div class="action-card">
               <div class="action-card-inner">
                 <div class="action-head">
-                  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h2.95A2 2 0 0 1 9 3.72l.57 2.53a2 2 0 0 1-.45 1.86l-1.2 1.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 1.86-.45l2.53.57A2 2 0 0 1 21 15.94l1 1z" fill="currentColor"/></svg>
+                  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h2.95A2 2 0 0 1 9 3.72l.57 2.53a2 2 0 0 1-.45 1.86l-1.2 1.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 1.86-.45l2.53.57A2 2 0 0 1 21 15.94l1 1z" fill="currentColor"/>
+                  </svg>
                   <span>Call us</span>
                 </div>
                 <a class="big-link" href="tel:+64221996468">+64 22 199 6468</a>
@@ -296,7 +300,9 @@
             <div class="action-card">
               <div class="action-card-inner">
                 <div class="action-head">
-                  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 0l8 7 8-7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 0l8 7 8-7" stroke="currentColor" stroke-width="2" fill="none"/>
+                  </svg>
                   <span>Email us</span>
                 </div>
                 <a class="big-link" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">shiningsilverfern@gmail.com</a>
