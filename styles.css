@@ -327,8 +327,14 @@ output#estimate {
   reveal();
   window.addEventListener('scroll', reveal, { passive:true });
 })();
-#estimateNote {
-  text-align: center;
+
+
+
+.estimator #estimateNote {
+  text-align: center !important;
+  margin: 0.75rem auto 0;
+  max-width: 60rem;
 }
+
 
 
