@@ -1,216 +1,275 @@
-// Mobile menu
-const toggle = document.querySelector('.nav-toggle');
-const menu = document.getElementById('menu');
+// ========== Navigation ==========
+const toggle = document.querySelector(".nav-toggle");
+const menu = document.getElementById("menu");
+
 if (toggle && menu) {
-  toggle.addEventListener('click', () => {
-    const open = menu.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
+  toggle.addEventListener("click", () => {
+    const open = menu.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(open));
   });
 }
 
-// Year
-const y = document.getElementById('year');
-if (y) y.textContent = new Date().getFullYear();
+// Year in footer
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-/* ===== Brand parallax (no images), respects reduced motion ===== */
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const layers = document.querySelectorAll('.layer');
-const bandLayers = document.querySelectorAll('.band-layer');
+// ========== Parallax (hero + band), respects prefers-reduced-motion ==========
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const layers = document.querySelectorAll(".layer");
+const bandLayers = document.querySelectorAll(".band-layer");
 
-if (!reduceMotion) {
+if (!reduceMotion && (layers.length || bandLayers.length)) {
   function animate() {
     const s = window.scrollY || 0;
-    layers.forEach((el, i) => el.style.transform = `translateY(${(-4 - i*2) + s*-0.02*(i+1)}%)`);
-    bandLayers.forEach((el, i) => el.style.transform = `translateY(${(-6 - i*3) + s*-0.015*(i+1)}%)`);
+    layers.forEach((el, i) => {
+      el.style.transform = `translateY(${(-4 - i * 2) + s * -0.02 * (i + 1)}%)`;
+    });
+    bandLayers.forEach((el, i) => {
+      el.style.transform = `translateY(${(-6 - i * 3) + s * -0.015 * (i + 1)}%)`;
+    });
     requestAnimationFrame(animate);
   }
   requestAnimationFrame(animate);
 }
 
-/* Tilt cards */
-document.querySelectorAll('.tilt').forEach(card=>{
+// ========== Card tilt ==========
+document.querySelectorAll(".tilt").forEach((card) => {
   let rect;
-  card.addEventListener('mousemove', e=>{
+  card.addEventListener("mousemove", (e) => {
     rect = rect || card.getBoundingClientRect();
-    const rx = (e.clientY - rect.top - rect.height/2)/rect.height;
-    const ry = (e.clientX - rect.left - rect.width/2)/rect.width;
-    card.style.transform = `rotateX(${rx*-3}deg) rotateY(${ry*3}deg) translateY(-3px)`;
+    const rx = (e.clientY - rect.top - rect.height / 2) / rect.height;
+    const ry = (e.clientX - rect.left - rect.width / 2) / rect.width;
+    card.style.transform = `rotateX(${rx * -3}deg) rotateY(${ry * 3}deg) translateY(-3px)`;
   });
-  card.addEventListener('mouseleave', ()=>{ card.style.transform=''; rect=null; });
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "";
+    rect = null;
+  });
 });
 
-PRICING = {
-  // Airbnb guide (from your last update)
-  airbnb: { oneBedBase: 6000000, extraBedroom: 25, perBathroom: 15, linen: 30 }, // $6,000,000 for 1BR turnover
+// ========== Pricing & Estimator (UPDATED) ==========
 
-  // Deep clean tiers (1–2 BR from $330)
-  deep: [
-    { maxBR: 2, price: 330 },
-    { maxBR: 3, price: 480 },
-    { maxBR: 4, price: 650 },
-    { maxBR: 99, base: 650, perExtraBR: 120 }
-  ],
-
-  // Hourly rates
-  hourly: { one: 50, two: 70, threePlus: 95 },
-
-  // EXTRAS — updated carpet price to hit $800 total for deep(2BR) + carpet(2BR)
+const PRICING = {
+  airbnb: {
+    combos: [
+      { bedrooms: 1, bathrooms: 1, price: 125 },
+      { bedrooms: 2, bathrooms: 2, price: 175 },
+      { bedrooms: 3, bathrooms: 2.5, price: 225 },
+      { bedrooms: 4, bathrooms: 3.5, price: 350 },
+    ],
+  },
+  deepHourly: 75,
+  carpetHourly: 90,
   extras: {
-    carpetPerBedroom: 235,       // <-- was 300; now 330 + 2*235 = 800
-    windowRate: 7.5,
-    windowBulkCap: 200,
+    windowAddon: 75,
+    carpetAddonPackage: 200,
     lawnFlat: 50,
-    inspection: 80
-  }
+    inspection: 80,
+  },
 };
 
+function formatNZD(n) {
+  return n.toLocaleString("en-NZ", {
+    style: "currency",
+    currency: "NZD",
+    maximumFractionDigits: 0,
+  });
+}
 
-/* ===== Estimator wiring ===== */
-const form = document.getElementById('quoteForm');
-const serviceSel = document.getElementById('service');
-const bedroomsEl = document.getElementById('bedrooms');
-const bathroomsEl = document.getElementById('bathrooms');
-const linenEl = document.getElementById('linen');
-const hoursEl = document.getElementById('hours');
-const cleanersEl = document.getElementById('cleaners');
+const quoteForm = document.getElementById("quoteForm");
+const serviceSel = document.getElementById("service");
+const bedroomsEl = document.getElementById("bedrooms");
+const bathroomsEl = document.getElementById("bathrooms");
+const hoursEl = document.getElementById("hours");
 
-const bedroomsWrap = document.getElementById('bedroomsWrap');
-const bathroomsWrap = document.getElementById('bathroomsWrap');
-const linenWrap = document.getElementById('linenWrap');
-const hoursWrap = document.getElementById('hoursWrap');
-const cleanersWrap = document.getElementById('cleanersWrap');
-
-const out = document.getElementById('estimate');
-const breakdownWrap = document.getElementById('breakdownWrap');
-const breakdownList = document.getElementById('breakdownList');
-const emailLink = document.getElementById('emailLink');
+const hoursWrap = document.getElementById("hoursWrap");
+const estimateOut = document.getElementById("estimate");
+const breakdownWrap = document.getElementById("breakdownWrap");
+const breakdownList = document.getElementById("breakdownList");
+const emailLink = document.getElementById("emailLink");
 
 function updateFieldVisibility() {
+  if (!serviceSel) return;
   const svc = serviceSel.value;
-  const isHourly = svc === 'hourly';
-  const isAirbnb = svc === 'airbnb';
-  bedroomsWrap.classList.toggle('hide', isHourly);
-  bathroomsWrap.classList.toggle('hide', isHourly);
-  linenWrap.classList.toggle('hide', !isAirbnb);
-  hoursWrap.classList.toggle('hide', !isHourly);
-  cleanersWrap.classList.toggle('hide', !isHourly);
+
+  const isHourly = svc === "deep" || svc === "carpet";
+
+  if (hoursWrap) hoursWrap.classList.toggle("hide", !isHourly);
 }
 
-function deepPrice(bedrooms) {
-  for (const tier of PRICING.deep) {
-    if (bedrooms <= tier.maxBR) {
-      if (tier.price) return tier.price;
-      const extras = Math.max(0, bedrooms - 4) * (tier.perExtraBR || 0);
-      return (tier.base || 0) + extras;
+function matchAirbnbPrice(bedrooms, bathrooms) {
+  bedrooms = Number(bedrooms || 0);
+  bathrooms = parseFloat(bathrooms || 0);
+
+  const combos = PRICING.airbnb.combos;
+  for (const combo of combos) {
+    if (combo.bedrooms === bedrooms && combo.bathrooms === bathrooms) {
+      return {
+        price: combo.price,
+        label: `${combo.bedrooms} BR / ${combo.bathrooms} toilet(s)`,
+        exact: true,
+      };
     }
   }
-  return 330;
-}
-function windowsPrice(count) {
-  const per = (count || 0) * PRICING.extras.windowRate;
-  const bulk = count >= 25 ? PRICING.extras.windowBulkCap : Infinity;
-  return Math.min(per, bulk);
-}
-function buildEmailBody(lines) {
-  const nl = encodeURIComponent('\n');
-  return lines.map(l => encodeURIComponent(l)).join(nl);
+
+  // Fallback: use the closest combination by bedrooms (never crash)
+  let fallback = combos[0];
+  for (const combo of combos) {
+    if (bedrooms >= combo.bedrooms) fallback = combo;
+  }
+  return {
+    price: fallback.price,
+    label: `${fallback.bedrooms} BR / ${fallback.bathrooms} toilet(s) (approx.)`,
+    exact: false,
+  };
 }
 
-function calculate(e) {
+function buildEmailBody(lines) {
+  const nl = encodeURIComponent("\n");
+  return lines.map((l) => encodeURIComponent(l)).join(nl);
+}
+
+function calculateEstimate(e) {
   if (e) e.preventDefault();
+  if (!quoteForm || !serviceSel) return;
 
   const svc = serviceSel.value;
-  const bedrooms = Number(bedroomsEl.value || 0);
-  const bathrooms = Number(bathroomsEl.value || 0);
-  const hours = Number(hoursEl.value || 0);
-  const cleaners = Number(cleanersEl.value || 1);
+  const bedrooms = Number(bedroomsEl?.value || 0);
+  const bathrooms = parseFloat(bathroomsEl?.value || 0);
+  const hours = Number(hoursEl?.value || 0);
 
-  const fd = new FormData(form);
-  const carpetBR = Number(fd.get('carpet_bedrooms') || 0);
-  const windowCount = Number(fd.get('windows') || 0);
-  const lawn = fd.get('lawn') === 'on';
-  const inspection = fd.get('inspection') === 'on';
-  const linen = linenEl && linenEl.checked;
+  const fd = new FormData(quoteForm);
+  const windowAddon = fd.get("window_addon") === "on";
+  const carpetAddon = fd.get("carpet_addon") === "on";
+  const lawn = fd.get("lawn") === "on";
+  const inspection = fd.get("inspection") === "on";
 
   let total = 0;
   const lines = [];
 
-  if (svc === 'airbnb') {
-    const base = PRICING.airbnb.oneBedBase;
-    const extraBeds = Math.max(0, bedrooms - 1) * PRICING.airbnb.extraBedroom;
-    const bathCost = Math.max(0, bathrooms) * PRICING.airbnb.perBathroom;
-    total += base + extraBeds + bathCost;
-    lines.push(`Airbnb turnover: ${formatNZD(base)} (1 bedroom)`);
-    if (extraBeds) lines.push(`Extra bedrooms: ${formatNZD(extraBeds)}`);
-    if (bathCost) lines.push(`Bathrooms: ${formatNZD(bathCost)}`);
-    if (linen) { total += PRICING.airbnb.linen; lines.push(`Linen service: ${formatNZD(PRICING.airbnb.linen)}`); }
-  } else if (svc === 'deep') {
-    const price = deepPrice(bedrooms || 1);
-    total += price; lines.push(`Deep clean (${bedrooms || 1} BR): ${formatNZD(price)}`);
-  } else {
-    const rate = cleaners >= 3 ? PRICING.hourly.threePlus : (cleaners === 2 ? PRICING.hourly.two : PRICING.hourly.one);
-    const cost = rate * (hours || 1);
-    total += cost; lines.push(`Hourly (${cleaners} cleaner${cleaners>1?'s':''} × ${hours || 1}h @ ${formatNZD(rate)}/h): ${formatNZD(cost)}`);
+  // Core service
+  if (svc === "airbnb") {
+    const result = matchAirbnbPrice(bedrooms, bathrooms);
+    total += result.price;
+    lines.push(`Airbnb cleaning ${result.label}: ${formatNZD(result.price)}`);
+    if (!result.exact) {
+      lines.push(
+        "Note: combination not in table — approximate price based on similar size."
+      );
+    }
+  } else if (svc === "deep") {
+    const rate = PRICING.deepHourly;
+    const hrs = hours || 0;
+    const cost = rate * hrs;
+    total += cost;
+    lines.push(`Deep cleaning (${hrs} h @ ${formatNZD(rate)}/h): ${formatNZD(cost)}`);
+  } else if (svc === "carpet") {
+    const rate = PRICING.carpetHourly;
+    const hrs = hours || 0;
+    const cost = rate * hrs;
+    total += cost;
+    lines.push(
+      `Carpet cleaning (${hrs} h @ ${formatNZD(rate)}/h): ${formatNZD(cost)}`
+    );
   }
 
-  if (carpetBR) { const c = carpetBR * PRICING.extras.carpetPerBedroom; total += c; lines.push(`Carpet deep clean (${carpetBR} BR): ${formatNZD(c)}`); }
-  if (windowCount) { const w = windowsPrice(windowCount); total += w; lines.push(`Window cleaning (${windowCount}): ${formatNZD(w)}`); }
-  if (lawn) { total += PRICING.extras.lawnFlat; lines.push(`Lawn mowing & trimming: ${formatNZD(PRICING.extras.lawnFlat)}`); }
-  if (inspection) { total += PRICING.extras.inspection; lines.push(`Inspection & inventory: ${formatNZD(PRICING.extras.inspection)}`); }
+  // Add-ons
+  if (windowAddon) {
+    total += PRICING.extras.windowAddon;
+    lines.push(`Window cleaning add-on: ${formatNZD(PRICING.extras.windowAddon)}`);
+  }
+  if (carpetAddon) {
+    total += PRICING.extras.carpetAddonPackage;
+    lines.push(
+      `Carpet cleaning add-on (with package): ${formatNZD(
+        PRICING.extras.carpetAddonPackage
+      )}`
+    );
+  }
+  if (lawn) {
+    total += PRICING.extras.lawnFlat;
+    lines.push(`Lawn mowing & trimming: ${formatNZD(PRICING.extras.lawnFlat)}`);
+  }
+  if (inspection) {
+    total += PRICING.extras.inspection;
+    lines.push(`Inspection & inventory report: ${formatNZD(PRICING.extras.inspection)}`);
+  }
 
-  out.textContent = `${formatNZD(total)} (approx.)`;
-  breakdownList.innerHTML = lines.map(l => `<li>${l}</li>`).join('');
-  breakdownWrap.classList.remove('hide');
+  // Output
+  if (estimateOut) estimateOut.textContent = `${formatNZD(total)} (approx.)`;
 
-  const subject = encodeURIComponent('Website Estimate — Shining Silver Fern');
-  const body = buildEmailBody([`Service: ${svc}`, ...lines, `Total: ${formatNZD(total)}`]);
-  emailLink.href = `mailto:shiningsilverfern@gmail.com?subject=${subject}&body=${body}`;
-  emailLink.classList.remove('disabled');
-  emailLink.setAttribute('aria-disabled','false');
+  if (breakdownList) {
+    breakdownList.innerHTML = lines.map((l) => `<li>${l}</li>`).join("");
+  }
+  if (breakdownWrap) breakdownWrap.classList.remove("hide");
+
+  if (emailLink) {
+    const subject = encodeURIComponent("Website Estimate — Shining Silver Fern");
+    const body = buildEmailBody([...lines, `Total: ${formatNZD(total)}`]);
+    emailLink.href = `mailto:shiningsilverfern@gmail.com?subject=${subject}&body=${body}`;
+    emailLink.classList.remove("disabled");
+    emailLink.setAttribute("aria-disabled", "false");
+  }
 }
 
-if (form) {
-  form.addEventListener('submit', calculate);
-  ['change','input'].forEach(evt => form.addEventListener(evt, () => { updateFieldVisibility(); calculate(); }));
-  updateFieldVisibility(); calculate(); // initial
+// Hook estimator
+if (quoteForm) {
+  quoteForm.addEventListener("submit", calculateEstimate);
+  ["change", "input"].forEach((evt) => {
+    quoteForm.addEventListener(evt, () => {
+      updateFieldVisibility();
+      calculateEstimate();
+    });
+  });
+  updateFieldVisibility();
+  calculateEstimate();
 }
 
-/* ==== Contact interactions: copy, toast, vCard, reveal ==== */
+// ========== Contact interactions: copy, toast, vCard, reveal ==========
 
-// Copy-to-clipboard with toast
-function showToast(msg){
-  let t = document.getElementById('toast');
-  if(!t){
-    t = document.createElement('div');
-    t.id = 'toast'; t.className = 'toast';
-    t.setAttribute('role','status'); t.setAttribute('aria-live','polite');
+// Toast
+function showToast(msg) {
+  let t = document.getElementById("toast");
+  if (!t) {
+    t = document.createElement("div");
+    t.id = "toast";
+    t.className = "toast";
+    t.setAttribute("role", "status");
+    t.setAttribute("aria-live", "polite");
     document.body.appendChild(t);
   }
   t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(()=> t.classList.remove('show'), 1500);
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 1500);
 }
 
-document.querySelectorAll('[data-copy]').forEach(btn=>{
-  btn.addEventListener('click', async () => {
-    const text = btn.getAttribute('data-copy') || '';
-    try{
+// Copy buttons
+document.querySelectorAll("[data-copy]").forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const text = btn.getAttribute("data-copy") || "";
+    try {
       await navigator.clipboard.writeText(text);
-      showToast('Copied to clipboard');
-    }catch{
-      // Fallback
-      const ta = document.createElement('textarea');
-      ta.value = text; document.body.appendChild(ta); ta.select();
-      try{ document.execCommand('copy'); showToast('Copied to clipboard'); }
-      finally{ ta.remove(); }
+      showToast("Copied to clipboard");
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        showToast("Copied to clipboard");
+      } finally {
+        ta.remove();
+      }
     }
   });
 });
 
 // vCard generator
-document.getElementById('saveVcard')?.addEventListener('click', () => {
-  const vcf =
-`BEGIN:VCARD
+const vcardBtn = document.getElementById("saveVcard");
+if (vcardBtn) {
+  vcardBtn.addEventListener("click", () => {
+    const vcf = `BEGIN:VCARD
 VERSION:3.0
 N:Shining Silver Fern LTD;;;;
 FN:Shining Silver Fern LTD
@@ -219,21 +278,52 @@ TEL;TYPE=CELL:+64221996468
 EMAIL:shiningsilverfern@gmail.com
 URL:https://www.shiningsilverfern.co.nz/
 END:VCARD`;
-  const blob = new Blob([vcf], {type:'text/vcard'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'ShiningSilverFern.vcf';
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(()=> URL.revokeObjectURL(url), 5000);
-});
-
-// Reveal action cards on scroll (once)
-const cards = document.querySelectorAll('.action-card');
-if ('IntersectionObserver' in window && cards.length){
-  const io = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold: .2});
-  cards.forEach(c=> io.observe(c));
-} else {
-  cards.forEach(c=> c.classList.add('in'));
+    const blob = new Blob([vcf], { type: "text/vcard" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "ShiningSilverFern.vcf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+  });
 }
+
+// Reveal action cards
+const cards = document.querySelectorAll(".action-card");
+if ("IntersectionObserver" in window && cards.length) {
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+  cards.forEach((c) => io.observe(c));
+} else {
+  cards.forEach((c) => c.classList.add("in"));
+}
+
+// Optional floating quick-contact bar (safe if not present)
+(function () {
+  const bar = document.getElementById("quickContact");
+  if (!bar) return;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reveal = () => {
+    const y = window.scrollY || 0;
+    bar.hidden = y < 600;
+    if (!reduce && !bar.hidden) {
+      bar.style.opacity = "1";
+      bar.style.transform = "translateY(0)";
+    }
+  };
+  bar.style.opacity = "0";
+  bar.style.transform = "translateY(8px)";
+  reveal();
+  window.addEventListener("scroll", reveal, { passive: true });
+})();
