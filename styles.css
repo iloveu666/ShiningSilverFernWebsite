@@ -327,4 +327,8 @@ output#estimate {
   reveal();
   window.addEventListener('scroll', reveal, { passive:true });
 })();
+#estimateNote {
+  text-align: center;
+}
+
 
