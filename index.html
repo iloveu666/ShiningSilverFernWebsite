@@ -5,16 +5,17 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shining Silver Fern LTD — Cleaning Solutions in Auckland</title>
-  <meta name="description" content="Deep cleaning, Airbnb turnovers, carpet & window cleaning, lawn care, inspections and property care across Auckland." />
+  <meta name="description" content="Premium deep cleaning, Airbnb turnovers, carpet & window cleaning, lawn care, inspections and property care across Auckland. Eco-safe, insured, hotel-standard." />
   <meta name="theme-color" content="#0C3C7E" />
 
-  <!-- Favicons (your files at repo root) -->
+  <!-- Favicons -->
   <link rel="icon" href="favicon.png" type="image/png" sizes="256x256">
+  <link rel="apple-touch-icon" href="logo.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Pinyon+Script&display=swap" rel="stylesheet">
 
   <!-- CSS & JS -->
   <link rel="stylesheet" href="styles.css" />
@@ -22,7 +23,7 @@
 
   <!-- Social -->
   <meta property="og:title" content="Shining Silver Fern LTD — Cleaning Solutions">
-  <meta property="og:description" content="Airbnb & residential deep cleans, carpet, windows, lawns and inspection reporting.">
+  <meta property="og:description" content="Airbnb & residential deep cleans, carpet, windows, lawns and inspection reporting across Auckland.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="logo.png">
   <meta property="og:locale" content="en_NZ">
@@ -47,248 +48,334 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" role="banner">
+  <!-- Scroll progress -->
+  <div class="scroll-progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <header class="site-header" id="siteHeader" role="banner">
     <nav class="nav" aria-label="Primary">
-      <a class="brand" href="#home">
-        <img src="logo.png" alt="Shining Silver Fern logo" width="64" height="64" loading="eager" decoding="async" />
-        <span class="brand-text">Shining Silver Fern LTD</span>
+      <a class="brand" href="#home" aria-label="Shining Silver Fern — home">
+        <img src="logo.png" alt="" width="44" height="44" loading="eager" decoding="async" />
+        <span class="brand-text">Shining Silver Fern<span class="brand-ltd">LTD</span></span>
       </a>
-      <button class="nav-toggle" aria-controls="menu" aria-expanded="false"><span class="sr-only">Menu</span>☰</button>
+
+      <button class="nav-toggle" aria-controls="menu" aria-expanded="false" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
       <ul id="menu" class="menu">
         <li><a class="link" href="#services">Services</a></li>
         <li><a class="link" href="#estimator">Estimator</a></li>
         <li><a class="link" href="#why-us">Why Us</a></li>
-        <li><a class="btn btn-primary btn-small" href="#contact">Get a Quote</a></li>
+        <li><a class="link" href="#contact">Contact</a></li>
+        <li><a class="btn btn-primary btn-small" href="#contact">Get a quote</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main">
-    <!-- HERO (brand-only parallax, no stock images) -->
+
+    <!-- ================= HERO ================= -->
     <section id="home" class="hero">
-      <div class="parallax" aria-hidden="true">
-        <div class="layer layer-grad"></div>
-        <div class="layer layer-shine"></div>
-        <div class="layer layer-shapes"></div>
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-glow"></div>
+        <div class="hero-sheen"></div>
+        <canvas id="sparkles" class="hero-sparkles"></canvas>
+        <svg class="hero-fern" viewBox="0 0 200 520" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="fernSilver" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f4f7fc"/>
+              <stop offset="0.45" stop-color="#cdd8e8"/>
+              <stop offset="0.6" stop-color="#8fa3c4"/>
+              <stop offset="0.8" stop-color="#eaf0f8"/>
+              <stop offset="1" stop-color="#b8c6dc"/>
+            </linearGradient>
+          </defs>
+          <g class="fern-draw" fill="none" stroke="url(#fernSilver)" stroke-width="2.4" stroke-linecap="round">
+            <path d="M100 500 C100 360 100 230 108 70"/>
+            <g stroke-width="2">
+              <path d="M108 90 C140 70 168 78 184 58"/>
+              <path d="M106 120 C140 102 170 112 186 92"/>
+              <path d="M104 152 C140 136 172 148 188 130"/>
+              <path d="M102 186 C138 172 170 186 186 170"/>
+              <path d="M100 222 C136 210 168 226 184 212"/>
+              <path d="M99 260 C134 250 164 266 180 254"/>
+              <path d="M98 300 C132 292 160 308 174 298"/>
+              <path d="M98 342 C128 336 154 350 166 342"/>
+              <path d="M108 90 C76 70 48 78 32 58"/>
+              <path d="M106 120 C72 102 42 112 26 92"/>
+              <path d="M104 152 C68 136 36 148 20 130"/>
+              <path d="M102 186 C66 172 34 186 18 170"/>
+              <path d="M100 222 C64 210 32 226 16 212"/>
+              <path d="M99 260 C66 250 36 266 20 254"/>
+              <path d="M98 300 C68 292 40 308 26 298"/>
+              <path d="M98 342 C70 336 46 350 34 342"/>
+            </g>
+          </g>
+        </svg>
       </div>
+
       <div class="hero-inner">
-        <img class="hero-logo" src="logo.png" alt="Shining Silver Fern" width="220" height="220" loading="lazy" decoding="async" />
-        <h1>
-          <span class="eyebrow">Cleaning Solutions • Auckland</span>
-          Shining results, every time.
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span> Auckland • Cleaning Solutions
+        </div>
+
+        <img class="hero-logo" src="logo.png" alt="Shining Silver Fern" width="180" height="180" loading="eager" decoding="async" />
+
+        <h1 class="hero-title">
+          Shining results,<br>
+          <span class="script">every&nbsp;time.</span>
         </h1>
-        <p class="lead">
-          Exceptional <strong>deep cleaning</strong>, <strong>Airbnb turnovers</strong>,
-          <strong>carpet & window cleaning</strong>, <strong>lawn care</strong> and
-          <strong>inspection & inventory reporting</strong>.
+
+        <p class="hero-lead">
+          Hotel-standard <strong>deep cleaning</strong>, seamless <strong>Airbnb turnovers</strong>,
+          <strong>carpet &amp; window care</strong>, <strong>lawns</strong> and detailed
+          <strong>inspection&nbsp;&amp; inventory reporting</strong> — across Tāmaki&nbsp;Makaurau.
         </p>
+
         <div class="cta-row">
-          <a class="btn btn-primary" href="#estimator">Instant estimate</a>
+          <a class="btn btn-primary btn-shine" href="#estimator">Get an instant estimate</a>
           <a class="btn btn-outline" href="#services">Explore services</a>
         </div>
-        <!-- Non-interactive info tags (clearly not buttons) -->
-        <ul class="tags" aria-label="Key qualities">
-          <li class="tag">Eco-safe products</li>
-          <li class="tag">Checklist & inspection ready</li>
-          <li class="tag">Insured & vetted team</li>
+
+        <ul class="trust-row" aria-label="Why customers trust us">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 19l-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z"/></svg> Eco-safe products</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19l11-11-1.5-1.5z"/></svg> Checklist &amp; inspection ready</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5z"/></svg> Insured &amp; vetted team</li>
         </ul>
+      </div>
+
+      <a class="scroll-cue" href="#services" aria-label="Scroll to services">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ================= STATS STRIP ================= -->
+    <section class="stats" aria-label="Key figures">
+      <div class="container stats-grid">
+        <div class="stat"><span class="stat-num" data-count="6">0</span><span class="stat-label">Specialist services</span></div>
+        <div class="stat"><span class="stat-num" data-count="100" data-suffix="%">0</span><span class="stat-label">Insured &amp; eco-safe</span></div>
+        <div class="stat"><span class="stat-num" data-count="1">0</span><span class="stat-label">Business-day reply</span></div>
+        <div class="stat"><span class="stat-num" data-count="2">0</span><span class="stat-label">Tailored bundles</span></div>
       </div>
     </section>
 
-    <!-- SERVICES -->
+    <!-- ================= SERVICES ================= -->
     <section id="services" class="section">
       <div class="container">
-        <h2>Our Services</h2>
-        <p class="section-intro">
-          Interior deep cleans, Airbnb changeovers, carpet & window cleaning, lawn mowing & hedge trimming,
-          and property inspection with inventory reporting.
+        <p class="eyebrow reveal">What we do</p>
+        <h2 class="section-title reveal">Our services</h2>
+        <p class="section-intro reveal">
+          Interior deep cleans, Airbnb changeovers, carpet &amp; window cleaning, lawn mowing &amp; hedge
+          trimming, and property inspection with inventory reporting.
         </p>
 
         <div class="cards">
-          <article class="card tilt">
+          <article class="card tilt reveal" tabindex="0">
             <div class="card-media" style="--img:url('assets/interior-deep-clean.jpg');"></div>
             <div class="card-body">
+              <span class="card-tag">Interiors</span>
               <h3>Interior Deep Clean</h3>
               <p>Top-to-bottom clean of rooms, kitchens, bathrooms and common areas using eco-safe agents.</p>
             </div>
           </article>
 
-          <article class="card tilt">
+          <article class="card tilt reveal" tabindex="0">
             <div class="card-media" style="--img:url('assets/airbnb.jpg');"></div>
             <div class="card-body">
+              <span class="card-tag">Hosting</span>
               <h3>Airbnb Turnover</h3>
               <p>Hotel-standard resets between guests and restocking of essentials as agreed.</p>
             </div>
           </article>
 
-          <article class="card tilt">
+          <article class="card tilt reveal" tabindex="0">
             <div class="card-media" style="--img:url('assets/carpet-cleaning.jpg');"></div>
             <div class="card-body">
+              <span class="card-tag">Restoration</span>
               <h3>Carpet Cleaning</h3>
               <p>Spot and deep extraction to remove stains, odours and allergens.</p>
             </div>
           </article>
 
-          <article class="card tilt">
+          <article class="card tilt reveal" tabindex="0">
             <div class="card-media" style="--img:url('assets/window-cleaning.jpg');"></div>
             <div class="card-body">
+              <span class="card-tag">Detailing</span>
               <h3>Window Cleaning</h3>
-              <p>Interior & exterior panes, frames and sills for a pristine finish.</p>
+              <p>Interior &amp; exterior panes, frames and sills for a pristine, streak-free finish.</p>
             </div>
           </article>
 
-          <article class="card tilt">
+          <article class="card tilt reveal" tabindex="0">
             <div class="card-media" style="--img:url('assets/lawn-mowing.png');"></div>
             <div class="card-body">
-              <h3>Lawn Mowing & Trimming</h3>
-              <p>Regular mowing, edging and hedge trims to keep exteriors tidy.</p>
+              <span class="card-tag">Exteriors</span>
+              <h3>Lawn Mowing &amp; Trimming</h3>
+              <p>Regular mowing, edging and hedge trims to keep exteriors tidy and welcoming.</p>
             </div>
           </article>
 
-          <article class="card tilt">
+          <article class="card tilt reveal" tabindex="0">
             <div class="card-media" style="--img:url('assets/inspection-inventory.jpeg');"></div>
             <div class="card-body">
-              <h3>Inspection & Inventory</h3>
-              <p>Detailed condition assessments and supply audits for proactive care.</p>
+              <span class="card-tag">Reporting</span>
+              <h3>Inspection &amp; Inventory</h3>
+              <p>Detailed condition assessments and supply audits for proactive property care.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ESTIMATOR – SIMPLE, CLEAN -->
+    <!-- ================= ESTIMATOR ================= -->
     <section id="estimator" class="section alt">
       <div class="container">
-        <h2>Instant price estimator</h2>
-        <p class="section-intro">
-          Quick, no-obligation estimate (GST inclusive). Final quotes follow a property walk-through.
+        <p class="eyebrow reveal">Transparent pricing</p>
+        <h2 class="section-title reveal">Instant price estimator</h2>
+        <p class="section-intro reveal">
+          A quick, no-obligation estimate (GST inclusive). Final quotes follow a property walk-through.
         </p>
 
-        <form id="quoteForm" class="estimator" aria-describedby="estimateNote">
-          <div class="grid">
-            <!-- Service selection -->
-            <label>Service
-              <select name="service" id="service" required>
-                <option value="airbnb">Airbnb cleaning (fixed price)</option>
-                <option value="deep">Deep cleaning (per hour)</option>
-                <option value="carpet">Carpet cleaning (per hour)</option>
+        <div class="estimator reveal">
+          <form id="quoteForm" class="estimator-form" novalidate>
+            <!-- Service -->
+            <fieldset class="field">
+              <legend>Choose a service</legend>
+              <div class="segmented" role="radiogroup" aria-label="Service">
+                <label class="seg">
+                  <input type="radio" name="service" value="airbnb" checked>
+                  <span>Airbnb<small>fixed price</small></span>
+                </label>
+                <label class="seg">
+                  <input type="radio" name="service" value="deep">
+                  <span>Deep clean<small>per hour</small></span>
+                </label>
+                <label class="seg">
+                  <input type="radio" name="service" value="carpet">
+                  <span>Carpet<small>per hour</small></span>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Airbnb size -->
+            <div class="field" id="airbnbSizeWrap">
+              <label class="field-label" for="airbnbSize">Property size</label>
+              <select name="airbnbSize" id="airbnbSize" class="control">
+                <option value="125">1 bedroom · 1 toilet — $125</option>
+                <option value="175">2 bedrooms · 2 toilets — $175</option>
+                <option value="225">3 bedrooms · 2.5 toilets — $225</option>
+                <option value="350">4 bedrooms · 3.5 toilets — $350</option>
               </select>
-            </label>
+            </div>
 
-            <!-- Simple Airbnb size selector -->
-            <label id="airbnbSizeWrap">Airbnb property size
-              <select name="airbnbSize" id="airbnbSize">
-                <option value="1-1">1 bedroom / 1 toilet – $125</option>
-                <option value="2-2">2 bedrooms / 2 toilets – $175</option>
-                <option value="3-2.5">3 bedrooms / 2.5 toilets – $225</option>
-                <option value="4-3.5">4 bedrooms / 3.5 toilets – $350</option>
-              </select>
-            </label>
+            <!-- Hours stepper -->
+            <div class="field hide" id="hoursWrap">
+              <label class="field-label" for="hours">Estimated hours</label>
+              <div class="stepper">
+                <button type="button" class="stepper-btn" data-step="-1" aria-label="Decrease hours">−</button>
+                <input name="hours" id="hours" class="control stepper-input" type="number" min="1" max="16" value="3" inputmode="numeric" />
+                <button type="button" class="stepper-btn" data-step="1" aria-label="Increase hours">+</button>
+              </div>
+            </div>
 
-            <!-- Simple hours input for hourly services -->
-            <label id="hoursWrap" class="hide">Hours
-              <input name="hours" id="hours" type="number" min="1" max="16" value="3" />
-            </label>
-
-            <!-- Very simple add-ons -->
-            <fieldset class="addons">
+            <!-- Add-ons -->
+            <fieldset class="field addons">
               <legend>Optional add-ons</legend>
-
-              <label class="checkbox">
+              <label class="switch">
                 <input type="checkbox" name="window_addon" id="window_addon" />
-                Window cleaning add-on (+$75)
+                <span class="switch-track"></span>
+                <span class="switch-text">Window cleaning <em>+$75</em></span>
               </label>
-
-              <label class="checkbox">
+              <label class="switch">
                 <input type="checkbox" name="carpet_addon" id="carpet_addon" />
-                Carpet cleaning add-on with package (+$200)
+                <span class="switch-track"></span>
+                <span class="switch-text">Carpet cleaning with package <em>+$200</em></span>
               </label>
             </fieldset>
-          </div>
+          </form>
 
-          <div class="estimate">
-            <button class="btn btn-primary" type="submit">Calculate estimate</button>
-            <output id="estimate" aria-live="polite">$—</output>
-          </div>
+          <!-- Summary panel -->
+          <aside class="estimate-panel" aria-live="polite">
+            <p class="estimate-cap">Estimated total</p>
+            <output id="estimate" class="estimate-figure">$—</output>
+            <p class="estimate-sub muted small">GST inclusive · indicative</p>
 
-     <p id="estimateNote" class="muted small">
-  <strong>Airbnb price guide</strong><br>
-  1BR / 1 toilet — $125 · 2BR / 2 toilets — $175 · 3BR / 2.5 toilets — $225 · 4BR / 3.5 toilets — $350<br>
-  <strong>Hourly services</strong> — Deep cleaning $75/hour · Carpet cleaning $95/hour<br>
-  <strong>Add-ons</strong> — Window clean $75 · Carpet add-on with package $200
-</p>
+            <ul id="breakdownList" class="breakdown-list"></ul>
 
-
-
-          <details id="breakdownWrap" class="breakdown hide">
-            <summary>View cost breakdown</summary>
-            <div class="info-box">
-              <ul id="breakdownList"></ul>
+            <div class="estimate-actions">
+              <a id="emailLink" class="btn btn-primary btn-small btn-shine disabled" href="#" aria-disabled="true">Email this estimate</a>
+              <button id="copyEstimate" class="btn btn-outline btn-small" type="button">Copy summary</button>
             </div>
-            <a id="emailLink" class="btn btn-outline btn-small disabled" href="#" aria-disabled="true">
-              Email this estimate
-            </a>
-          </details>
-        </form>
+          </aside>
+        </div>
 
-        <div class="info-box">
-          <h3>Bundled proposals (guide)</h3>
-          <ul>
-            <li>
-              <strong>Option A — Standard Deep Clean Bundle:</strong>
-              Deep clean + carpet + window + garden tidy + inspection ·
-              <em>Small (1–2BR):</em> $480–$550 ·
-              <em>Medium (3–4BR):</em> $650–$750
-            </li>
-            <li>
-              <strong>Option B — Premium Ongoing Maintenance:</strong>
-              Monthly maintenance (medium property) ~ $400/month ·
-              Quarterly deep service + lawn ~ $400/visit
-            </li>
-          </ul>
+        <p class="price-guide muted small reveal">
+          <strong>Airbnb guide</strong> — 1BR $125 · 2BR $175 · 3BR $225 · 4BR $350 &nbsp;|&nbsp;
+          <strong>Hourly</strong> — Deep clean $75/hr · Carpet $95/hr &nbsp;|&nbsp;
+          <strong>Add-ons</strong> — Window $75 · Carpet package $200
+        </p>
+
+        <!-- Bundles -->
+        <div class="bundles">
+          <article class="bundle reveal">
+            <div class="bundle-flag">Option A</div>
+            <h3>Standard Deep Clean Bundle</h3>
+            <p>Deep clean + carpet + window + garden tidy + inspection.</p>
+            <ul class="bundle-prices">
+              <li><span>Small (1–2BR)</span><strong>$480–$550</strong></li>
+              <li><span>Medium (3–4BR)</span><strong>$650–$750</strong></li>
+            </ul>
+          </article>
+          <article class="bundle reveal">
+            <div class="bundle-flag">Option B</div>
+            <h3>Premium Ongoing Maintenance</h3>
+            <p>Keep a property guest-ready all year with scheduled visits.</p>
+            <ul class="bundle-prices">
+              <li><span>Monthly (medium)</span><strong>~$400/mo</strong></li>
+              <li><span>Quarterly deep + lawn</span><strong>~$400/visit</strong></li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- WHY US -->
+    <!-- ================= WHY US ================= -->
     <section id="why-us" class="section">
       <div class="container">
-        <h2>Why choose Shining Silver Fern</h2>
+        <p class="eyebrow reveal">The Silver Fern standard</p>
+        <h2 class="section-title reveal">Why choose Shining Silver Fern</h2>
 
-        <div class="pill-list">
-          <a class="chip" href="#estimator">Transparent pricing</a>
-          <span class="tag">Eco-conscious</span>
-          <span class="tag">Fully insured</span>
-          <span class="tag">Vetted team</span>
-          <span class="tag">Digital checklists</span>
-          <span class="tag">Photo reports</span>
-          <a class="chip" href="#contact">Flexible scheduling</a>
+        <div class="feature-grid">
+          <div class="feature reveal"><span class="feature-ic">✶</span><h3>Transparent pricing</h3><p>Clear estimates up front and itemised quotes after a walk-through.</p></div>
+          <div class="feature reveal"><span class="feature-ic">❧</span><h3>Eco-conscious</h3><p>Eco-safe agents that are kinder to your home, guests and the planet.</p></div>
+          <div class="feature reveal"><span class="feature-ic">⛨</span><h3>Fully insured</h3><p>A vetted, insured team you can trust inside any property.</p></div>
+          <div class="feature reveal"><span class="feature-ic">☑</span><h3>Digital checklists</h3><p>Every visit follows a documented, inspection-ready checklist.</p></div>
+          <div class="feature reveal"><span class="feature-ic">▦</span><h3>Photo reports</h3><p>Before/after photos and condition notes delivered after each job.</p></div>
+          <div class="feature reveal"><span class="feature-ic">⏱</span><h3>Flexible scheduling</h3><p>Same-week turnarounds and recurring slots that fit your calendar.</p></div>
         </div>
 
-        <div class="testimonial" role="region" aria-label="Customer testimonial">
-          <blockquote>
-            “Flawless deep cleans and reliable reporting — our properties look hotel-ready after every visit.”
-          </blockquote>
-          <p class="author">— Property Manager, Auckland</p>
-        </div>
+        <figure class="testimonial reveal">
+          <blockquote>Flawless deep cleans and reliable reporting — our properties look hotel-ready after every visit.</blockquote>
+          <figcaption>— Property Manager, Auckland</figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- ================= CONTACT ================= -->
     <section id="contact" class="section contact">
       <div class="container">
-        <h2>Ready for a sparkling property?</h2>
-        <p class="section-intro">Call, email or send a quick message — we’ll respond within one business day.</p>
+        <p class="eyebrow reveal">Get in touch</p>
+        <h2 class="section-title reveal">Ready for a sparkling property?</h2>
+        <p class="section-intro reveal">Call, email or send a quick message — we’ll respond within one business day.</p>
 
         <div class="contact-grid">
-          <!-- LEFT: Interactive contact actions -->
-          <div class="contact-actions" id="contactActions">
-            <div class="action-card">
+          <div class="contact-actions">
+            <div class="action-card reveal">
               <div class="action-card-inner">
                 <div class="action-head">
-                  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h2.95A2 2 0 0 1 9 3.72l.57 2.53a2 2 0 0 1-.45 1.86l-1.2 1.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 1.86-.45l2.53.57A2 2 0 0 1 21 15.94l1 1z" fill="currentColor"/>
-                  </svg>
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h2.95A2 2 0 0 1 9 3.72l.57 2.53a2 2 0 0 1-.45 1.86l-1.2 1.2a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 1.86-.45l2.53.57A2 2 0 0 1 21 15.94l1 1z"/></svg>
                   <span>Call us</span>
                 </div>
                 <a class="big-link" href="tel:+64221996468">+64 22 199 6468</a>
@@ -300,12 +387,10 @@
               </div>
             </div>
 
-            <div class="action-card">
+            <div class="action-card reveal">
               <div class="action-card-inner">
                 <div class="action-head">
-                  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 0l8 7 8-7" stroke="currentColor" stroke-width="2" fill="none"/>
-                  </svg>
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 6l8 7 8-7" fill="none" stroke="currentColor" stroke-width="2"/></svg>
                   <span>Email us</span>
                 </div>
                 <a class="big-link" href="mailto:shiningsilverfern@gmail.com?subject=Quote%20request">shiningsilverfern@gmail.com</a>
@@ -317,17 +402,27 @@
               </div>
             </div>
 
-            <div class="action-utility">
-              <button id="saveVcard" class="btn btn-ghost btn-small" type="button">Save contact (.vcf)</button>
-            </div>
+            <button id="saveVcard" class="btn btn-ghost btn-small" type="button">⤓ Save contact card (.vcf)</button>
           </div>
 
-          <!-- RIGHT: Message form -->
-          <form class="contact-form" action="mailto:shiningsilverfern@gmail.com" method="post" enctype="text/plain">
-            <label>Your name<input name="name" type="text" required /></label>
-            <label>Email<input name="email" type="email" required /></label>
-            <label>Message<textarea name="message" rows="4" required></textarea></label>
-            <button class="btn btn-primary" type="submit">Send</button>
+          <form class="contact-form reveal" id="contactForm" action="mailto:shiningsilverfern@gmail.com" method="post" enctype="text/plain" novalidate>
+            <div class="form-row">
+              <label class="field-label" for="cf-name">Your name</label>
+              <input id="cf-name" name="name" class="control" type="text" autocomplete="name" required />
+              <span class="field-error" data-for="cf-name"></span>
+            </div>
+            <div class="form-row">
+              <label class="field-label" for="cf-email">Email</label>
+              <input id="cf-email" name="email" class="control" type="email" autocomplete="email" required />
+              <span class="field-error" data-for="cf-email"></span>
+            </div>
+            <div class="form-row">
+              <label class="field-label" for="cf-msg">Message</label>
+              <textarea id="cf-msg" name="message" class="control" rows="4" required></textarea>
+              <span class="field-error" data-for="cf-msg"></span>
+            </div>
+            <button class="btn btn-primary btn-shine" type="submit">Send message</button>
+            <p class="form-note muted small" id="formNote" hidden></p>
           </form>
         </div>
       </div>
@@ -335,9 +430,31 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Shining Silver Fern" width="56" height="56" />
+        <div>
+          <p class="footer-name">Shining Silver Fern LTD</p>
+          <p class="muted small">Cleaning Solutions • Auckland, NZ</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#services">Services</a>
+        <a href="#estimator">Estimator</a>
+        <a href="#why-us">Why us</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer-contact">
+        <a href="tel:+64221996468">+64 22 199 6468</a>
+        <a href="mailto:shiningsilverfern@gmail.com">shiningsilverfern@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-base">
       <p>© <span id="year"></span> Shining Silver Fern LTD. All rights reserved.</p>
     </div>
   </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top" hidden>↑</button>
 </body>
 </html>
