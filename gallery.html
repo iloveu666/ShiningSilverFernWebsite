@@ -3,50 +3,61 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gallery — Shining Silver Fern</title>
+  <title>Gallery — Shining Silver Fern LTD</title>
+  <meta name="description" content="A look at the standards Shining Silver Fern works to across Auckland properties." />
+  <meta name="theme-color" content="#0C3C7E" />
   <link rel="icon" href="favicon.png" type="image/png" sizes="256x256">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Pinyon+Script&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" role="banner">
     <nav class="nav" aria-label="Primary">
       <a class="brand" href="index.html#home">
-        <img src="logo.png" alt="Shining Silver Fern logo" width="40" height="40" />
-        <span class="brand-text">Shining Silver Fern LTD</span>
+        <img src="logo.png" alt="" width="40" height="40" />
+        <span class="brand-text">Shining Silver Fern<span class="brand-ltd">LTD</span></span>
       </a>
-      <ul class="menu">
+      <ul class="menu" style="position:static;opacity:1;transform:none;pointer-events:auto;background:none;border:0;box-shadow:none;flex-direction:row">
         <li><a class="link" href="index.html#services">Services</a></li>
         <li><a class="link" href="index.html#estimator">Estimator</a></li>
-        <li><a class="link" href="index.html#contact">Contact</a></li>
+        <li><a class="btn btn-primary btn-small" href="index.html#contact">Get a quote</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="section">
+  <main id="main" class="section">
     <div class="container">
-      <h1>Gallery</h1>
-      <p class="section-intro">A few snapshots of the standards we work to. Stock imagery for illustration — we’re happy to share job-specific examples on request.</p>
+      <p class="eyebrow">Our work</p>
+      <h1 class="section-title" style="font-size:clamp(2rem,1.4rem + 2.6vw,3rem)">Gallery</h1>
+      <p class="section-intro">A few snapshots of the standards we work to. We’re always happy to share
+      job-specific before/after examples on request.</p>
 
       <div class="cards">
-        <!-- Unsplash Source seeds give stable randomized images -->
-        <article class="card"><div class="card-media" style="--img:url('https://source.unsplash.com/seed/ssf1/1200x800?cleaning');"></div><h3>Kitchen reset</h3></article>
-        <article class="card"><div class="card-media" style="--img:url('https://source.unsplash.com/seed/ssf2/1200x800?housekeeping');"></div><h3>Hotel-standard finish</h3></article>
-        <article class="card"><div class="card-media" style="--img:url('https://source.unsplash.com/seed/ssf3/1200x800?window-cleaning');"></div><h3>Crystal-clear windows</h3></article>
-        <article class="card"><div class="card-media" style="--img:url('https://source.unsplash.com/seed/ssf4/1200x800?carpet-cleaning');"></div><h3>Carpet extraction</h3></article>
-        <article class="card"><div class="card-media" style="--img:url('https://source.unsplash.com/seed/ssf5/1200x800?lawn');"></div><h3>Lawn & edges</h3></article>
-        <article class="card"><div class="card-media" style="--img:url('https://source.unsplash.com/seed/ssf6/1200x800?bathroom-cleaning');"></div><h3>Bathrooms that sparkle</h3></article>
+        <article class="card tilt"><div class="card-media" style="--img:url('assets/interior-deep-clean.jpg');"></div><div class="card-body"><span class="card-tag">Interiors</span><h3>Kitchen &amp; living reset</h3></div></article>
+        <article class="card tilt"><div class="card-media" style="--img:url('assets/airbnb.jpg');"></div><div class="card-body"><span class="card-tag">Hosting</span><h3>Hotel-standard turnover</h3></div></article>
+        <article class="card tilt"><div class="card-media" style="--img:url('assets/window-cleaning.jpg');"></div><div class="card-body"><span class="card-tag">Detailing</span><h3>Crystal-clear windows</h3></div></article>
+        <article class="card tilt"><div class="card-media" style="--img:url('assets/carpet-cleaning.jpg');"></div><div class="card-body"><span class="card-tag">Restoration</span><h3>Carpet extraction</h3></div></article>
+        <article class="card tilt"><div class="card-media" style="--img:url('assets/lawn-mowing.png');"></div><div class="card-body"><span class="card-tag">Exteriors</span><h3>Lawns &amp; edges</h3></div></article>
+        <article class="card tilt"><div class="card-media" style="--img:url('assets/inspection-inventory.jpeg');"></div><div class="card-body"><span class="card-tag">Reporting</span><h3>Inspection &amp; inventory</h3></div></article>
       </div>
+
+      <p style="text-align:center;margin-top:2.5rem">
+        <a class="btn btn-primary btn-shine" href="index.html#contact">Request a quote</a>
+        <a class="btn btn-outline" href="index.html" style="margin-left:.5rem">Back to home</a>
+      </p>
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Shining Silver Fern LTD</p>
-      <nav><a class="link" href="index.html">Back to home</a></nav>
+  <footer class="site-footer">
+    <div class="footer-base">
+      <p>© <span id="year"></span> Shining Silver Fern LTD. All rights reserved.</p>
     </div>
   </footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+
+  <script defer src="script.js"></script>
 </body>
 </html>
