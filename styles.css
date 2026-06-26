@@ -188,11 +188,13 @@ main section[id]{scroll-margin-top:78px}
   transform:skewX(-14deg);animation:heroSheen 7s var(--ease) infinite}
 @keyframes heroSheen{0%,100%{transform:translateX(-10%) skewX(-14deg)}50%{transform:translateX(40%) skewX(-14deg)}}
 .hero-sparkles{position:absolute;inset:0;width:100%;height:100%}
-.hero-fern{position:absolute;right:max(2vw,-20px);top:50%;transform:translateY(-50%);
-  height:118%;opacity:.16;filter:drop-shadow(0 6px 24px rgba(0,0,0,.25))}
-.fern-draw path{stroke-dasharray:1;stroke-dashoffset:1;
-  animation:fernDraw 2.6s var(--ease) forwards}
+.hero-fern{position:absolute;right:max(2vw,-20px);top:50%;
+  height:118%;opacity:0;transform:translate(22px,-50%);
+  filter:drop-shadow(0 8px 26px rgba(0,0,0,.3));
+  animation:fernRise 1.7s var(--ease) .25s forwards}
+.fern-stem{stroke-dasharray:1;stroke-dashoffset:1;animation:fernDraw 2.2s var(--ease) .3s forwards}
 @keyframes fernDraw{to{stroke-dashoffset:0}}
+@keyframes fernRise{to{opacity:.15;transform:translate(0,-50%)}}
 
 .hero-inner{max-width:880px;margin:0 auto;padding:clamp(3rem,8vw,6.5rem) 1.25rem clamp(4rem,8vw,6rem)}
 .hero-badge{display:inline-flex;align-items:center;gap:.5rem;
@@ -445,7 +447,8 @@ select.control{appearance:none;background-image:url("data:image/svg+xml,%3Csvg x
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
   .hero-badge,.hero-logo,.hero-title,.hero-lead,.cta-row,.trust-row{animation:none;opacity:1}
-  .hero-sheen,.scroll-cue span,.hero-badge-dot,.fern-draw path{animation:none}
-  .fern-draw path{stroke-dashoffset:0}
+  .hero-sheen,.scroll-cue span,.hero-badge-dot{animation:none}
+  .hero-fern{animation:none;opacity:.15;transform:translate(0,-50%)}
+  .fern-stem{animation:none;stroke-dashoffset:0}
   .btn-shine:hover::before,.card:hover .card-media::before{animation:none}
 }
